@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useCart } from "../context/CartContext";
 
-export default function Navbar() {
+export default function Navbar({ onCartClick }) {
   const { cart } = useCart();
 
   return (
@@ -45,7 +45,9 @@ export default function Navbar() {
           </div>
 
           {/* Cart */}
-          <button className="
+          <button 
+            onClick={onCartClick}
+            className="
             relative 
             px-6 
             py-2 
@@ -59,22 +61,24 @@ export default function Navbar() {
             hover:scale-105 
             transition
           ">
-            Cart
-            <span className="
-              absolute 
-              -top-2 
-              -right-2 
-              w-5 
-              h-5 
-              rounded-full 
-              bg-black 
-              text-xs 
-              flex 
-              items-center 
-              justify-center
-            ">
-              {cart.length}
-            </span>
+            🛒 Cart
+            {cart.length > 0 && (
+              <span className="
+                absolute 
+                -top-2 
+                -right-2 
+                w-5 
+                h-5 
+                rounded-full 
+                bg-black 
+                text-xs 
+                flex 
+                items-center 
+                justify-center
+              ">
+                {cart.length}
+              </span>
+            )}
           </button>
         </div>
       </div>

@@ -6,6 +6,13 @@ import { useCart } from "../context/CartContext";
 export default function ProductCard({ product }) {
   const { addToCart } = useCart();
   const [qty, setQty] = useState(1);
+  const [isAdded, setIsAdded] = useState(false);
+
+  const handleAddToCart = () => {
+    addToCart(product);
+    setIsAdded(true);
+    setTimeout(() => setIsAdded(false), 1500);
+  };
 
   return (
     <motion.div
@@ -30,16 +37,16 @@ export default function ProductCard({ product }) {
         Valentine Offer
       </span>
 
-      <div className="flex justify-between items-center mt-4">
-        <QuantityControl qty={qty} setQty={setQty} />
-
-        <button
-          onClick={() => addToCart(product, qty)}
-          className="px-6 py-2 rounded-full bg-pink-600 text-white"
-        >
-          Add
-        </button>
-      </div>
+      <button
+        onClick={handleAddToCart}
+        className={`w-full mt-4 py-2 rounded-full font-bold text-white transition-all ${
+          isAdded
+            ? "bg-green-500"
+            : "bg-pink-600 hover:bg-pink-700"
+        }`}
+      >
+        {isAdded ? "✓ Added to Cart" : "+ Add to Cart"}
+      </button>
     </motion.div>
   );
 }
