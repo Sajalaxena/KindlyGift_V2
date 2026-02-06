@@ -1,11 +1,27 @@
+import { useState } from "react";
+import { AnimatePresence } from "framer-motion";
 import ValentineBackground from "./components/ValentineBackground";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import ProductCard from "./components/ProductCard";
 import Footer from "./components/Footer";
+import CartDrawer from "./components/CartDrawer";
+import Checkout from "./components/Checkout";
 import { products } from "./data/products";
 
 export default function App() {
+  const [showCart, setShowCart] = useState(false);
+  const [showCheckout, setShowCheckout] = useState(false);
+
+  const handleCheckout = () => {
+    setShowCart(false);
+    setShowCheckout(true);
+  };
+
+  const handleCloseCheckout = () => {
+    setShowCheckout(false);
+  };
+
   return (
     <div className="relative min-h-screen bg-gradient-to-br from-pink-200 via-rose-200 to-purple-200 overflow-hidden font-body">
       
@@ -14,7 +30,7 @@ export default function App() {
 
       {/* Foreground content */}
       <div className="relative z-10">
-        <Navbar />
+        <Navbar onCartClick={() => setShowCart(!showCart)} />
 
         {/* ================= HERO SECTION ================= */}
       {/* ================= HERO SECTION ================= */}
@@ -84,6 +100,20 @@ export default function App() {
         {/* ================= FOOTER ================= */}
         <Footer />
       </div>
+
+      {/* Cart Drawer */}
+      <AnimatePresence>
+        {showCart && (
+          <CartDrawer onCheckout={handleCheckout} />
+        )}
+      </AnimatePresence>
+
+      {/* Checkout Modal */}
+      <AnimatePresence>
+        {showCheckout && (
+          <Checkout onClose={handleCloseCheckout} />
+        )}
+      </AnimatePresence>
     </div>
   );
 }
