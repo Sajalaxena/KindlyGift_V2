@@ -25,7 +25,7 @@ export default function Navbar({ onCartClick }) {
           
           {/* Brand */}
           <div className="flex items-center gap-3">
-            <div className="
+            {/* <div className="
               w-10 h-10 
               rounded-full 
               bg-gradient-to-br 
@@ -35,9 +35,9 @@ export default function Navbar({ onCartClick }) {
               text-white 
               font-bold
               shadow-lg
-            ">
-              💖
-            </div>
+            "> */}
+              <img src="/Kindly_gift.png" alt="KindlyGift" width={40} height={40} className="rounded-full"/>
+            {/* </div> */}
 
             <span className="font-heading text-2xl text-pink-600">
               KindlyGift

@@ -58,6 +58,8 @@ export default function Checkout({ onClose, onOrderSuccess }) {
   };
 
   const finalTotal = Math.max(0, total - discountAmount);
+  const deliveryCharge = finalTotal < 999 ? 49 : 0;
+  const grandTotal = finalTotal + deliveryCharge;
 
   const validateForm = () => {
     if (!formData.customerName.trim()) {
@@ -107,12 +109,13 @@ export default function Checkout({ onClose, onOrderSuccess }) {
           cart.map((item) => ({ id: item.id, qty: item.qty }))
         ),
         product_price: JSON.stringify(
-          cart.map((item) => ({ id: item.id, price: item.salePrice }))
+          cart.map((item) => ({ id: item.id, price: item.salePrice })).concat([{ id: 0, delivery: 80 }])
         ),
         subtotal: total.toFixed(2),
         coupon_code: appliedCoupon || "NONE",
         discount_amt: discountAmount.toFixed(2),
-        total_amount: finalTotal.toFixed(2),
+        delivery_charge: deliveryCharge.toFixed(2),
+        total_amount: grandTotal.toFixed(2),
         payment_method: "COD",
         order_status: "Pending",
       };
@@ -207,9 +210,16 @@ export default function Checkout({ onClose, onOrderSuccess }) {
                     </div>
                   )}
 
+                  {deliveryCharge > 0 && (
+                    <div className="flex justify-between text-gray-700">
+                      <span>Delivery Charge:</span>
+                      <span className="font-semibold">₹{deliveryCharge.toFixed(2)}</span>
+                    </div>
+                  )}
+
                   <div className="border-t border-gray-300 pt-3 flex justify-between font-bold text-lg text-pink-600">
                     <span>Total:</span>
-                    <span>₹{finalTotal.toFixed(2)}</span>
+                    <span>₹{grandTotal.toFixed(2)}</span>
                   </div>
                 </div>
 
@@ -218,6 +228,14 @@ export default function Checkout({ onClose, onOrderSuccess }) {
                   <p className="text-sm font-semibold text-blue-900 mb-2">Payment Method</p>
                   <p className="text-lg font-bold text-green-600">💵 Cash on Delivery (COD)</p>
                   <p className="text-xs text-gray-600 mt-1">Pay when you receive the order</p>
+                </div>
+
+                {/* Return Policy Notice - Compact */}
+                <div className="bg-amber-50 border-l-2 border-amber-500 rounded p-3 mt-6">
+                  <p className="text-xs font-semibold text-amber-900 mb-1">Return Policy</p>
+                  <p className="text-xs text-amber-800 leading-snug">
+                    Returns accepted only for wrong items within 24 hours of delivery.
+                  </p>
                 </div>
               </>
             )}
