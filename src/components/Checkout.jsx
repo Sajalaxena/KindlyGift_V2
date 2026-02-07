@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { useCart } from "../context/CartContext";
+import MessageDialog from "./MessageDialog";
 
 const API_ENDPOINT = "https://script.google.com/macros/s/AKfycbwn7KjWn6R-fKUtqvZtZcM1KMD0N4a_OUHlU1M-8hQFUGqWgo_BYEIKTEMSa5LRh9OT8A/exec";
 
-export default function Checkout({ onClose }) {
+export default function Checkout({ onClose, onOrderSuccess }) {
   const { cart, total, clearCart } = useCart();
   const [isLoading, setIsLoading] = useState(false);
+  const [message, setMessage] = useState({ isOpen: false, type: "", text: "" });
+
   const [formData, setFormData] = useState({
     customerName: "",
     customerEmail: "",
@@ -26,17 +29,16 @@ export default function Checkout({ onClose }) {
     }));
   };
 
-  // Mock coupon codes - replace with your actual validation
   const VALID_COUPONS = {
-    SAVE10: 0.1, // 10% off
-    SAVE20: 0.2, // 20% off
-    FLAT100: 100, // Flat 100 off
+    SAVE10: 0.1,
+    SAVE20: 0.2,
+    FLAT100: 100,
   };
 
   const handleApplyCoupon = () => {
     const coupon = formData.couponCode.trim().toUpperCase();
     if (!coupon) {
-      alert("Please enter a coupon code");
+      setMessage({ isOpen: true, type: "error", text: "Please enter a coupon code" });
       return;
     }
 
@@ -47,9 +49,9 @@ export default function Checkout({ onClose }) {
 
       setDiscountAmount(discount);
       setAppliedCoupon(coupon);
-      alert(`Coupon applied! Discount: ₹${discount.toFixed(2)}`);
+      setMessage({ isOpen: true, type: "success", text: `Coupon applied! Discount: ₹${discount.toFixed(2)}` });
     } else {
-      alert("Invalid coupon code");
+      setMessage({ isOpen: true, type: "error", text: "Invalid coupon code" });
       setDiscountAmount(0);
       setAppliedCoupon("");
     }
@@ -59,23 +61,23 @@ export default function Checkout({ onClose }) {
 
   const validateForm = () => {
     if (!formData.customerName.trim()) {
-      alert("Please enter your name");
+      setMessage({ isOpen: true, type: "error", text: "Please enter your name" });
       return false;
     }
     if (!formData.customerEmail.trim()) {
-      alert("Please enter your email");
+      setMessage({ isOpen: true, type: "error", text: "Please enter your email" });
       return false;
     }
     if (!formData.customerMobile.trim() || formData.customerMobile.length !== 10) {
-      alert("Please enter a valid 10-digit mobile number");
+      setMessage({ isOpen: true, type: "error", text: "Please enter a valid 10-digit mobile number" });
       return false;
     }
     if (!formData.address.trim()) {
-      alert("Please enter your address");
+      setMessage({ isOpen: true, type: "error", text: "Please enter your address" });
       return false;
     }
     if (!formData.pinCode.trim() || formData.pinCode.length !== 6) {
-      alert("Please enter a valid 6-digit pin code");
+      setMessage({ isOpen: true, type: "error", text: "Please enter a valid 6-digit pin code" });
       return false;
     }
     return true;
@@ -83,14 +85,13 @@ export default function Checkout({ onClose }) {
 
   const handlePlaceOrder = async () => {
     if (!validateForm() || cart.length === 0) {
-      alert("Please add items to cart and fill all details");
+      setMessage({ isOpen: true, type: "error", text: "Please add items to cart and fill all details" });
       return;
     }
 
     setIsLoading(true);
 
     try {
-      // Prepare order data
       const orderData = {
         order_id: `ORD_${Date.now()}`,
         order_date_time: new Date().toLocaleString("en-IN"),
@@ -116,7 +117,6 @@ export default function Checkout({ onClose }) {
         order_status: "Pending",
       };
 
-      // Send to Google Sheet API
       const response = await fetch(API_ENDPOINT, {
         method: "POST",
         body: JSON.stringify(orderData),
@@ -126,168 +126,222 @@ export default function Checkout({ onClose }) {
         throw new Error("Failed to place order");
       }
 
-      alert("✅ Order placed successfully! We'll deliver it soon.");
       clearCart();
-      onClose();
+      onOrderSuccess(`ORD_${Date.now()}`);
     } catch (error) {
       console.error("Error placing order:", error);
-      alert("❌ Failed to place order. Please try again.");
+      setMessage({ isOpen: true, type: "error", text: "Failed to place order. Please try again." });
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-        {/* Header */}
-        <div className="sticky top-0 bg-pink-600 text-white p-4 flex justify-between items-center">
-          <h2 className="text-2xl font-bold">Checkout</h2>
+    <div className="min-h-screen bg-gradient-to-br from-pink-200 via-rose-200 to-purple-200">
+      {/* Header */}
+      <div className="bg-pink-600 text-white p-4 sticky top-0 z-40 shadow-lg">
+        <div className="max-w-7xl mx-auto flex justify-between items-center">
+          <h1 className="text-2xl font-bold">Checkout</h1>
           <button
             onClick={onClose}
-            className="text-2xl hover:bg-pink-700 p-2 rounded"
+            className="text-2xl hover:bg-pink-700 p-2 rounded transition-colors"
           >
             ✕
           </button>
         </div>
+      </div>
 
-        <div className="p-6">
-          {/* Order Summary */}
-          <div className="bg-gray-50 p-4 rounded-lg mb-6">
-            <h3 className="font-bold text-lg mb-3">Order Summary</h3>
-            {cart.map((item) => (
-              <div key={item.id} className="flex justify-between text-sm mb-2">
-                <span>
-                  {item.name} x {item.qty}
-                </span>
-                <span>₹{(item.salePrice * item.qty).toFixed(2)}</span>
+      {/* Main Content - Two Column Layout */}
+      <div className="max-w-7xl mx-auto p-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {/* LEFT COLUMN - Order Summary */}
+          <div className="bg-white rounded-lg shadow-lg p-6">
+            <h2 className="text-2xl font-bold text-gray-800 mb-6">Order Summary</h2>
+
+            {cart.length === 0 ? (
+              <div className="text-center py-8">
+                <p className="text-gray-500 text-lg">Your cart is empty</p>
               </div>
-            ))}
-            <hr className="my-3" />
-            <div className="flex justify-between font-bold text-lg">
-              <span>Subtotal:</span>
-              <span>₹{total.toFixed(2)}</span>
-            </div>
-            {discountAmount > 0 && (
-              <div className="flex justify-between text-green-600 font-bold">
-                <span>Discount ({appliedCoupon}):</span>
-                <span>-₹{discountAmount.toFixed(2)}</span>
-              </div>
+            ) : (
+              <>
+                {/* Items List */}
+                <div className="space-y-4 mb-6">
+                  {cart.map((item) => (
+                    <div key={item.id} className="border-b border-gray-200 pb-4">
+                      <div className="flex gap-4">
+                        {item.image && (
+                          <img
+                            src={item.image}
+                            alt={item.name}
+                            className="w-20 h-20 object-cover rounded-lg"
+                          />
+                        )}
+                        <div className="flex-1">
+                          <h4 className="font-bold text-gray-800">{item.name}</h4>
+                          <p className="text-gray-600 text-sm mt-1">
+                            Quantity: <span className="font-semibold text-pink-600">{item.qty}</span>
+                          </p>
+                          <p className="text-gray-600 text-sm">
+                            Per Unit Price: <span className="font-semibold">₹{item.salePrice}</span>
+                          </p>
+                          <p className="text-pink-600 font-bold text-lg mt-2">
+                            ₹{(item.salePrice * item.qty).toFixed(2)}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Price Breakdown */}
+                <div className="bg-gray-50 rounded-lg p-4 space-y-3">
+                  <div className="flex justify-between text-gray-700">
+                    <span>Subtotal:</span>
+                    <span className="font-semibold">₹{total.toFixed(2)}</span>
+                  </div>
+
+                  {discountAmount > 0 && (
+                    <div className="flex justify-between text-green-600">
+                      <span>Discount ({appliedCoupon}):</span>
+                      <span className="font-semibold">-₹{discountAmount.toFixed(2)}</span>
+                    </div>
+                  )}
+
+                  <div className="border-t border-gray-300 pt-3 flex justify-between font-bold text-lg text-pink-600">
+                    <span>Total:</span>
+                    <span>₹{finalTotal.toFixed(2)}</span>
+                  </div>
+                </div>
+
+                {/* Payment Info */}
+                <div className="bg-blue-50 rounded-lg p-4 mt-6">
+                  <p className="text-sm font-semibold text-blue-900 mb-2">Payment Method</p>
+                  <p className="text-lg font-bold text-green-600">💵 Cash on Delivery (COD)</p>
+                  <p className="text-xs text-gray-600 mt-1">Pay when you receive the order</p>
+                </div>
+              </>
             )}
-            <div className="flex justify-between font-bold text-lg text-pink-600 mt-3">
-              <span>Total:</span>
-              <span>₹{finalTotal.toFixed(2)}</span>
-            </div>
           </div>
 
-          {/* Customer Information Form */}
-          <div className="space-y-4 mb-6">
-            <h3 className="font-bold text-lg">Delivery Information</h3>
+          {/* RIGHT COLUMN - Delivery Form */}
+          <div className="bg-white rounded-lg shadow-lg p-6">
+            <h2 className="text-2xl font-bold text-gray-800 mb-6">Delivery Information</h2>
 
-            <input
-              type="text"
-              name="customerName"
-              placeholder="Full Name *"
-              value={formData.customerName}
-              onChange={handleInputChange}
-              className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-pink-600"
-            />
-
-            <input
-              type="email"
-              name="customerEmail"
-              placeholder="Email Address *"
-              value={formData.customerEmail}
-              onChange={handleInputChange}
-              className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-pink-600"
-            />
-
-            <input
-              type="tel"
-              name="customerMobile"
-              placeholder="Mobile Number (10 digits) *"
-              value={formData.customerMobile}
-              onChange={handleInputChange}
-              maxLength="10"
-              className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-pink-600"
-            />
-
-            <textarea
-              name="address"
-              placeholder="Delivery Address (Street, Area, Landmark) *"
-              value={formData.address}
-              onChange={handleInputChange}
-              rows="3"
-              className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-pink-600"
-            />
-
-            <input
-              type="text"
-              name="pinCode"
-              placeholder="Pin Code (6 digits) *"
-              value={formData.pinCode}
-              onChange={handleInputChange}
-              maxLength="6"
-              className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-pink-600"
-            />
-          </div>
-
-          {/* Coupon Code Section */}
-          <div className="bg-blue-50 p-4 rounded-lg mb-6">
-            <h3 className="font-bold mb-3">Apply Coupon (Optional)</h3>
-            <div className="flex gap-2">
+            <div className="space-y-4">
+              {/* Customer Details */}
               <input
                 type="text"
-                name="couponCode"
-                placeholder="Enter coupon code"
-                value={formData.couponCode}
+                name="customerName"
+                placeholder="Full Name *"
+                value={formData.customerName}
                 onChange={handleInputChange}
-                disabled={appliedCoupon !== ""}
-                className="flex-1 p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-600 disabled:bg-gray-100"
+                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-600 transition-all"
               />
-              {appliedCoupon ? (
-                <button
-                  onClick={() => {
-                    setAppliedCoupon("");
-                    setDiscountAmount(0);
-                    setFormData((prev) => ({ ...prev, couponCode: "" }));
-                  }}
-                  className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
-                >
-                  Remove
-                </button>
-              ) : (
-                <button
-                  onClick={handleApplyCoupon}
-                  className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-                >
-                  Apply
-                </button>
-              )}
+
+              <input
+                type="email"
+                name="customerEmail"
+                placeholder="Email Address *"
+                value={formData.customerEmail}
+                onChange={handleInputChange}
+                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-600 transition-all"
+              />
+
+              <input
+                type="tel"
+                name="customerMobile"
+                placeholder="Mobile Number (10 digits) *"
+                value={formData.customerMobile}
+                onChange={handleInputChange}
+                maxLength="10"
+                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-600 transition-all"
+              />
+
+              <textarea
+                name="address"
+                placeholder="Delivery Address (Street, Area, Landmark) *"
+                value={formData.address}
+                onChange={handleInputChange}
+                rows="4"
+                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-600 transition-all resize-none"
+              />
+
+              <input
+                type="text"
+                name="pinCode"
+                placeholder="Pin Code (6 digits) *"
+                value={formData.pinCode}
+                onChange={handleInputChange}
+                maxLength="6"
+                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-600 transition-all"
+              />
+
+              {/* Coupon Section */}
+              <div className="bg-blue-50 rounded-lg p-4 mt-6">
+                <h3 className="font-bold text-gray-800 mb-3">Apply Coupon (Optional)</h3>
+                <div className="flex gap-2 mb-2">
+                  <input
+                    type="text"
+                    name="couponCode"
+                    placeholder="Enter coupon code"
+                    value={formData.couponCode}
+                    onChange={handleInputChange}
+                    disabled={appliedCoupon !== ""}
+                    className="flex-1 p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 disabled:bg-gray-100 transition-all"
+                  />
+                  {appliedCoupon ? (
+                    <button
+                      onClick={() => {
+                        setAppliedCoupon("");
+                        setDiscountAmount(0);
+                        setFormData((prev) => ({ ...prev, couponCode: "" }));
+                      }}
+                      className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 font-semibold transition-colors"
+                    >
+                      Remove
+                    </button>
+                  ) : (
+                    <button
+                      onClick={handleApplyCoupon}
+                      className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-semibold transition-colors"
+                    >
+                      Apply
+                    </button>
+                  )}
+                </div>
+                {/* <p className="text-xs text-gray-600">Try: SAVE10 (10%), SAVE20 (20%), FLAT100 (₹100 off)</p> */}
+              </div>
+
+              {/* Place Order Button */}
+              <button
+                onClick={handlePlaceOrder}
+                disabled={isLoading || cart.length === 0}
+                className="w-full bg-pink-600 text-white py-4 rounded-lg font-bold text-lg hover:bg-pink-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors mt-8"
+              >
+                {isLoading ? "Placing Order..." : "Place Order (COD)"}
+              </button>
+
+              {/* Cancel Button */}
+              <button
+                onClick={onClose}
+                disabled={isLoading}
+                className="w-full bg-gray-300 text-gray-800 py-3 rounded-lg font-bold hover:bg-gray-400 disabled:opacity-50 transition-colors"
+              >
+                Cancel
+              </button>
             </div>
-            <p className="text-xs text-gray-600 mt-2">
-              Available codes: SAVE10 (10%), SAVE20 (20%), FLAT100 (₹100 off)
-            </p>
           </div>
-
-          {/* Payment Method */}
-          <div className="bg-yellow-50 p-4 rounded-lg mb-6">
-            <h3 className="font-bold mb-2">Payment Method</h3>
-            <p className="text-lg font-bold text-green-600">
-              💵 Cash on Delivery (COD) - Pay when you receive
-            </p>
-          </div>
-
-          {/* Place Order Button */}
-          <button
-            onClick={handlePlaceOrder}
-            disabled={isLoading || cart.length === 0}
-            className="w-full bg-pink-600 text-white py-3 rounded-lg font-bold text-lg hover:bg-pink-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
-          >
-            {isLoading ? "Placing Order..." : "Place Order (COD)"}
-          </button>
         </div>
       </div>
+
+      {/* Message Dialog */}
+      <MessageDialog
+        isOpen={message.isOpen}
+        type={message.type}
+        message={message.text}
+        onClose={() => setMessage({ isOpen: false, type: "", text: "" })}
+        autoClose={3000}
+      />
     </div>
   );
 }
