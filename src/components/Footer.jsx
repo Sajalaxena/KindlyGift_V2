@@ -1,7 +1,6 @@
 import {
   FaInstagram,
   FaFacebookF,
-  FaTwitter,
   FaHeart
 } from "react-icons/fa";
 
@@ -32,16 +31,12 @@ export default function Footer() {
         {/* Social icons */}
         <div className="flex justify-center gap-8 mt-12">
           
-          <SocialIcon href="#" label="Instagram">
+          <SocialIcon href="https://www.instagram.com/kindly._.gift?igsh=N2FidG9wcjdwdTR6" label="Instagram">
             <FaInstagram />
           </SocialIcon>
 
-          <SocialIcon href="#" label="Facebook">
+          <SocialIcon href="https://www.facebook.com/share/1ASEbxaGCo/" label="Facebook">
             <FaFacebookF />
-          </SocialIcon>
-
-          <SocialIcon href="#" label="Twitter">
-            <FaTwitter />
           </SocialIcon>
 
         </div>
@@ -51,10 +46,10 @@ export default function Footer() {
           <p>
             Contact us:{" "}
             <a
-              href="mailto:support@kindlygift.com"
+              href="mailto:help@kindlygift.com"
               className="text-pink-600 font-medium hover:underline"
             >
-              support@kindlygift.com
+              help@kindlygift.com
             </a>
           </p>
         </div>

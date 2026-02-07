@@ -97,7 +97,7 @@ export default function HomePage() {
       {/* Cart Drawer */}
       <AnimatePresence>
         {showCart && (
-          <CartDrawer onCheckout={handleCheckout} />
+          <CartDrawer onCheckout={handleCheckout} onClose={() => setShowCart(false)} />
         )}
       </AnimatePresence>
     </div>
