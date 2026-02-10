@@ -32,7 +32,7 @@ export default function MessageDialog({ isOpen, type, message, onClose, autoClos
         <div className="mt-6 flex justify-end">
           <button
             onClick={onClose}
-            className={`${buttonColor} text-white px-6 py-2 rounded font-semibold transition-colors`}
+            className={`${buttonColor} text-white px-6 py-2 rounded font-semibold transition-colors cursor-pointer`}
           >
             Close
           </button>

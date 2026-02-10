@@ -23,7 +23,7 @@ export default function ThankYouPage({ orderId, onGoHome }) {
         {/* Home Button */}
         <button
           onClick={onGoHome}
-          className="w-full bg-pink-600 text-white py-3 rounded-lg font-bold text-lg hover:bg-pink-700 transition-colors"
+          className="w-full bg-pink-600 text-white py-3 rounded-lg font-bold text-lg hover:bg-pink-700 transition-colors cursor-pointer"
         >
           Back to Home
         </button>

@@ -147,7 +147,7 @@ export default function Checkout({ onClose, onOrderSuccess }) {
           <h1 className="text-2xl font-bold">Checkout</h1>
           <button
             onClick={onClose}
-            className="text-2xl hover:bg-pink-700 p-2 rounded transition-colors"
+            className="text-2xl hover:bg-pink-700 p-2 rounded transition-colors cursor-pointer"
           >
             ✕
           </button>
@@ -314,14 +314,14 @@ export default function Checkout({ onClose, onOrderSuccess }) {
                         setDiscountAmount(0);
                         setFormData((prev) => ({ ...prev, couponCode: "" }));
                       }}
-                      className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 font-semibold transition-colors"
+                      className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 font-semibold transition-colors cursor-pointer"
                     >
                       Remove
                     </button>
                   ) : (
                     <button
                       onClick={handleApplyCoupon}
-                      className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-semibold transition-colors"
+                      className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-semibold transition-colors cursor-pointer"
                     >
                       Apply
                     </button>
@@ -334,7 +334,7 @@ export default function Checkout({ onClose, onOrderSuccess }) {
               <button
                 onClick={handlePlaceOrder}
                 disabled={isLoading || cart.length === 0}
-                className="w-full bg-pink-600 text-white py-4 rounded-lg font-bold text-lg hover:bg-pink-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors mt-8"
+                className="w-full bg-pink-600 text-white py-4 rounded-lg font-bold text-lg hover:bg-pink-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors mt-8 cursor-pointer"
               >
                 {isLoading ? "Placing Order..." : "Place Order (COD)"}
               </button>
@@ -343,7 +343,7 @@ export default function Checkout({ onClose, onOrderSuccess }) {
               <button
                 onClick={onClose}
                 disabled={isLoading}
-                className="w-full bg-gray-300 text-gray-800 py-3 rounded-lg font-bold hover:bg-gray-400 disabled:opacity-50 transition-colors"
+                className="w-full bg-gray-300 text-gray-800 py-3 rounded-lg font-bold hover:bg-gray-400 disabled:opacity-50 transition-colors cursor-pointer"
               >
                 Cancel
               </button>
