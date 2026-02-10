@@ -24,7 +24,7 @@ export default function Hero() {
           Flat 50% OFF – Limited Time Only!
         </p>
 
-        <button className="mt-6 px-8 py-3 rounded-full bg-pink-600 text-white text-lg font-semibold hover:scale-105 transition">
+        <button className="mt-6 px-8 py-3 rounded-full bg-pink-600 text-white text-lg font-semibold hover:scale-105 transition cursor-pointer">
           Shop Now
         </button>
       </motion.div>

@@ -39,7 +39,7 @@ export default function ProductCard({ product }) {
 
       <button
         onClick={handleAddToCart}
-        className={`w-full mt-4 py-2 rounded-full font-bold text-white transition-all ${
+        className={`w-full mt-4 py-2 rounded-full font-bold text-white transition-all cursor-pointer ${
           isAdded
             ? "bg-green-500"
             : "bg-pink-600 hover:bg-pink-700"

@@ -24,7 +24,7 @@ export default function Navbar({ onCartClick }) {
         ">
           
           {/* Brand */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 cursor-pointer">
             {/* <div className="
               w-10 h-10 
               rounded-full 
@@ -60,6 +60,7 @@ export default function Navbar({ onCartClick }) {
             shadow-lg
             hover:scale-105 
             transition
+            cursor-pointer
           ">
             🛒 Cart
             {cart.length > 0 && (

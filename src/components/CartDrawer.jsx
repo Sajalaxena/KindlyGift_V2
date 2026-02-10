@@ -32,7 +32,7 @@ export default function CartDrawer({ onCheckout, onClose }) {
             <button
               onClick={onClose}
               aria-label="Close cart"
-              className="text-2xl text-gray-500 hover:text-gray-700 p-1 rounded-md"
+              className="text-2xl text-gray-500 hover:text-gray-700 p-1 rounded-md cursor-pointer"
             >
               ✕
             </button>
@@ -62,7 +62,7 @@ export default function CartDrawer({ onCheckout, onClose }) {
                       </div>
                       <button
                         onClick={() => removeFromCart(item.id)}
-                        className="text-pink-600 hover:text-pink-700 text-lg"
+                        className="text-pink-600 hover:text-pink-700 text-lg cursor-pointer"
                         aria-label={`Remove ${item.name}`}
                       >
                         ✕
@@ -73,14 +73,14 @@ export default function CartDrawer({ onCheckout, onClose }) {
                       <div className="flex items-center gap-2">
                         <button
                           onClick={() => updateQuantity(item.id, Math.max(1, item.qty - 1))}
-                          className="w-8 h-8 bg-gray-200 rounded text-gray-700 flex items-center justify-center"
+                          className="w-8 h-8 bg-gray-200 rounded text-gray-700 flex items-center justify-center cursor-pointer"
                         >
                           −
                         </button>
                         <div className="px-3 font-semibold">{item.qty}</div>
                         <button
                           onClick={() => updateQuantity(item.id, item.qty + 1)}
-                          className="w-8 h-8 bg-gray-200 rounded text-gray-700 flex items-center justify-center"
+                          className="w-8 h-8 bg-gray-200 rounded text-gray-700 flex items-center justify-center cursor-pointer"
                         >
                           +
                         </button>
@@ -120,14 +120,14 @@ export default function CartDrawer({ onCheckout, onClose }) {
 
               <button
                 onClick={onCheckout}
-                className="w-full bg-pink-600 text-white py-3 rounded-lg font-bold hover:bg-pink-700 transition-colors"
+                className="w-full bg-pink-600 text-white py-3 rounded-lg font-bold hover:bg-pink-700 transition-colors cursor-pointer"
               >
                 Checkout
               </button>
 
               <button
                 onClick={onClose}
-                className="w-full mt-3 bg-white border border-gray-200 text-gray-800 py-2 rounded-lg font-semibold hover:bg-gray-50"
+                className="w-full mt-3 bg-white border border-gray-200 text-gray-800 py-2 rounded-lg font-semibold hover:bg-gray-50 cursor-pointer"
               >
                 Continue Shopping
               </button>
