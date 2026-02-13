@@ -1,31 +1,15 @@
-import { useState } from "react";
-import { AnimatePresence } from "framer-motion";
-import ValentineBackground from "../components/ValentineBackground";
-import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import ProductCard from "../components/ProductCard";
-import Footer from "../components/Footer";
-import CartDrawer from "../components/CartDrawer";
 import { useNavigate } from "react-router-dom";
 import { products } from "../data/products";
 
 export default function HomePage() {
-  const [showCart, setShowCart] = useState(false);
   const navigate = useNavigate();
 
-  const handleCheckout = () => {
-    setShowCart(false);
-    navigate("/checkout");
-  };
-
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-pink-200 via-rose-200 to-purple-200 overflow-hidden font-body">
-      {/* Ambient animated background */}
-      <ValentineBackground />
-
+    <div className="relative min-h-screen overflow-hidden font-body">
       {/* Foreground content */}
       <div className="relative z-10">
-        <Navbar onCartClick={() => setShowCart(!showCart)} />
 
         {/* ================= HERO SECTION ================= */}
         <section className="max-w-7xl mx-auto px-6 pt-16 pb-24">
@@ -44,9 +28,18 @@ export default function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12">
-            {products.map((p) => (
+            {products.flatMap(cat => cat.products).slice(0, 3).map((p) => (
               <ProductCard key={p.id} product={p} />
             ))}
+          </div>
+
+          <div className="mt-16 text-center">
+            <button
+              onClick={() => navigate("/products")}
+              className="px-10 py-4 rounded-full bg-white text-pink-600 font-bold border-2 border-pink-200 hover:bg-pink-50 hover:border-pink-300 transition-all shadow-lg hover:scale-105"
+            >
+              Explore All Products →
+            </button>
           </div>
         </section>
 
@@ -90,16 +83,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ================= FOOTER ================= */}
-        <Footer />
       </div>
-
-      {/* Cart Drawer */}
-      <AnimatePresence>
-        {showCart && (
-          <CartDrawer onCheckout={handleCheckout} onClose={() => setShowCart(false)} />
-        )}
-      </AnimatePresence>
     </div>
   );
 }
