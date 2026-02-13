@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
 import { useCart } from "../context/CartContext";
+import { useNavigate } from "react-router-dom";
 
 export default function Navbar({ onCartClick }) {
   const { cart } = useCart();
+  const navigate = useNavigate();
 
   return (
     <motion.header
@@ -22,22 +24,13 @@ export default function Navbar({ onCartClick }) {
           justify-between
           shadow-[0_20px_40px_rgba(255,20,147,0.25)]
         ">
-          
+
           {/* Brand */}
-          <div className="flex items-center gap-3 cursor-pointer">
-            {/* <div className="
-              w-10 h-10 
-              rounded-full 
-              bg-gradient-to-br 
-              from-pink-500 
-              to-rose-400 
-              flex items-center justify-center 
-              text-white 
-              font-bold
-              shadow-lg
-            "> */}
-              <img src="/Kindly_gift.png" alt="KindlyGift" width={40} height={40} className="rounded-full"/>
-            {/* </div> */}
+          <div
+            onClick={() => navigate("/")}
+            className="flex items-center gap-3 cursor-pointer"
+          >
+            <img src="/Kindly_gift.png" alt="KindlyGift" width={40} height={40} className="rounded-full" />
 
             <span className="font-heading text-2xl text-pink-600">
               KindlyGift
@@ -45,7 +38,7 @@ export default function Navbar({ onCartClick }) {
           </div>
 
           {/* Cart */}
-          <button 
+          <button
             onClick={onCartClick}
             className="
             relative 

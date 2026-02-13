@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import QuantityControl from "./QuantityControl";
 import { useCart } from "../context/CartContext";
+import ImageSlider from "./ImageSlider";
 
 export default function ProductCard({ product }) {
   const { addToCart } = useCart();
@@ -14,15 +15,21 @@ export default function ProductCard({ product }) {
     setTimeout(() => setIsAdded(false), 1500);
   };
 
+  const images = Array.isArray(product.image) ? product.image : [product.image];
+
   return (
     <motion.div
       whileHover={{ y: -8 }}
       className="glass rounded-3xl shadow-xl overflow-hidden p-4"
     >
-      <img
-        src={product.image}
-        className="w-full h-56 object-cover rounded-2xl"
-      />
+      {images.length > 1 ? (
+        <ImageSlider images={images} height="h-56" />
+      ) : (
+        <img
+          src={images[0]}
+          className="w-full h-56 object-cover rounded-2xl"
+        />
+      )}
 
       <h3 className="mt-4 font-bold text-lg">{product.name}</h3>
 
