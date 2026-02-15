@@ -20,7 +20,7 @@ export default function ProductCard({ product }) {
   return (
     <motion.div
       whileHover={{ y: -8 }}
-      className="glass rounded-3xl shadow-xl overflow-hidden p-4"
+      className="glass rounded-3xl shadow-xl overflow-hidden p-4 border border-gray-200/20"
     >
       {images.length > 1 ? (
         <ImageSlider images={images} height="h-56" />
