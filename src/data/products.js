@@ -1,340 +1,173 @@
 export const products = [
   {
     id: "C1",
-    categoryName: 'pear',
+    categoryName: 'night-lights',
     products: [
       {
         id: "C1P1",
-        name: "Sweet Pear Plushie",
-        price: 1099,
-        salePrice: 649,
-        image: [
-          "https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771012197/IMG-20260211-WA0028_lqnrms.jpg",
+        name: "Bunny Dreams Silicone Glow",
+        price: 999,
+        salePrice: 549,
+        image: ["https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771180441/Silicon_Rabbit_1_u46yxx.jpg",
+          "https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771180441/Silicon_Rabbit_2_adnapr.jpg",
+          "https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771180441/Silicon_Rabbit_3_g2n47d.jpg"
         ],
-        description: "A super soft and huggable pear plushie that brings a touch of sweetness to any room. Perfectly sized for cozy cuddles."
+        description: "Adorable silicone rabbit night lamp with soft glow, perfect for bedside comfort and gentle illumination.",
+        isOutOfStock: false
       },
+      {
+        id: "C1P2",
+        name: "Dreamy Duck Companion",
+        price: 999,
+        salePrice: 699,
+        image: ["https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771180443/Slipping_Duck_3_kri17g.jpg",
+          "https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771180441/Slipping_Duck_1_cdnty7.jpg"
+        ],
+        description: "Cute duck-themed night light with a playful design, adding charm and warmth to any room.",
+        isOutOfStock: false
+      },
+      {
+        id: "C1P3",
+        name: "Cuddle Panda Night Glow",
+        price: 999,
+        salePrice: 649,
+        image: ["https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771180435/Cute_Panda_light_1_mc1ms6.jpg",
+          "https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771180441/PandaLamp_bsgoir.jpg",
+          "https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771180437/Cute_Panda_light_3_kbyy48.jpg",
+          "https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771180436/Cute_Panda_light_2_vvdbbn.jpg",
+          "https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771180441/PandaLamp2_ra5lw4.jpg",
+        ],
+        description: "Charming panda-shaped night lamp that creates a cozy atmosphere for peaceful nights.",
+        isOutOfStock: false
+      },
+      {
+        id: "C1P4",
+        name: "Cosmic Explorer Night Light",
+        price: 999,
+        salePrice: 699,
+        image: ["https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771180448/Astronaut_Lamp_owpj4j.jpg",
+          "https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771180438/Astronaut_Lamp2_t8drtx.jpg",
+          "https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771180449/Astronaut_Lamp1_qe6okt.jpg"
+        ],
+        description: "Space-themed astronaut silicone night light, perfect for dreamers and space enthusiasts.",
+        isOutOfStock: false
+      }
     ]
   },
   {
     id: "C2",
-    categoryName: 'cheese',
+    categoryName: 'string-lights',
     products: [
       {
         id: "C2P1",
-        name: "Cheesy Delight Stuffed Toy",
-        price: 999,
-        salePrice: 549,
-        image: [
-          "https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771012190/IMG-20260211-WA0013_vlf8dl.jpg",
+        name: "Memory Lane Photo String Lights",
+        price: 499,
+        salePrice: 249,
+        image: ["https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771180440/LED_clip_2_ggardg.jpg",
+          "https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771180439/LED_clip_1_dnwqyd.jpg"
         ],
-        description: "This goofy cheese slice is here to melt your heart. A quirky gift for the cheese lover who has everything."
-      },
+        description: "Versatile LED string lights with clips, perfect for hanging photos and creating a warm, personalized display.",
+        isOutOfStock: false
+      }
     ]
   },
   {
     id: "C3",
-    categoryName: 'dino',
+    categoryName: 'table-lamps',
     products: [
       {
         id: "C3P1",
-        name: "Glowing Dino Adventure",
-        price: 1199,
-        salePrice: 699,
-        image: [
-          "https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771012200/IMG-20260211-WA0033_ziot6l.jpg",
-          "https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771012194/IMG-20260211-WA0023_wrk3tt.jpg"
+        name: "Blossom Tulip Table Lamp",
+        price: 699,
+        salePrice: 449,
+        image: ["https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771180443/Tulip_Lamp_3_w3eaao.jpg",
+          "https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771180443/Tulip_Lamp_wijy02.jpg",
+          "https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771180445/Tulip_Lamp1_gdjlgk.jpg"
         ],
-        description: "Light up your night with this prehistoric pal. This dino's gentle glow creates a magical atmosphere for bedtime stories."
+        description: "Elegant tulip-inspired lamp that brings a touch of nature and sophistication to your living space.",
+        isOutOfStock: false
       },
       {
         id: "C3P2",
-        name: "Dino Glow Buddy",
-        price: 1099,
-        salePrice: 599,
+        name: "Diamond Sparkle Luxury Lamp",
+        price: 699,
+        salePrice: 499,
         image: [
-          "https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771012192/IMG-20260211-WA0021_y1pdok.jpg",
+          "https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771180440/Crystal-Lamp1_fembtf.jpg",
+          "https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771180436/CrystalLamp2_xzddrf.jpg"
         ],
-        description: "A compact dino companion that fits perfectly on a bedside table. Emits a soft, calming light to chase away the shadows."
-      },
+        description: "Stunning crystal diamond-shaped table lamp that adds luxury and sparkle to any room decor.",
+        isOutOfStock: false
+      }
     ]
   },
   {
     id: "C4",
-    categoryName: 'duck',
+    categoryName: '3d-crystal-lamps',
     products: [
       {
         id: "C4P1",
-        name: "Quacky Duck Companion",
-        price: 999,
-        salePrice: 499,
-        image: [
-          "https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771012205/IMG-20260211-WA0041_ukdqml.jpg"
+        name: "Lunar Glow Crystal Ball",
+        price: 599,
+        salePrice: 349,
+        image: ["https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771180446/3D_moon_1_vpzpm6.jpg",
+          "https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771180447/3D_moon_3_aftsfu.jpg"
         ],
-        description: "Waddle into comfort with this plush duck. Its soft yellow fur and friendly face make it the perfect cheer-up gift."
+        description: "Mesmerizing 3D crystal ball featuring a detailed moon design, creating magical illumination.",
+        isOutOfStock: false
+      },
+      {
+        id: "C4P2",
+        name: "Galactic Journey Crystal Ball",
+        price: 599,
+        salePrice: 349,
+        image: ["https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771180447/3D_solar_system_1_oqn21b.jpg",
+          "https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771180445/3D_crystal_Ball_night_Lamp_1_ze8mhp.jpg",
+          "https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771180446/3D_crystal_Ball_night_Lamp_3_sgzwqi.jpg",
+          "https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771180449/3D_crystal_Ball_night_Lamp_2_zcznrs.jpg",
+          "https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771180448/3D_solar_system_2_djd2fw.jpg"
+        ],
+        description: "Captivating 3D crystal ball showcasing the solar system, perfect for astronomy lovers.",
+        isOutOfStock: false
+      },
+      {
+        id: "C4P3",
+        name: "Enchanted Crystal Sphere",
+        price: 599,
+        salePrice: 349,
+        image: ["https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771180446/3D_moon_2_xrkdj4.jpg"],
+        description: "Beautiful 3D crystal ball lamp with intricate designs that illuminate with enchanting patterns.",
+        isOutOfStock: false
       }
     ]
   },
   {
     id: "C5",
-    categoryName: 'kitten',
+    categoryName: 'projection-lights',
     products: [
       {
         id: "C5P1",
-        name: "Cuddly Kitten Plush",
-        price: 1099,
-        salePrice: 649,
-        image: [
-          "https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771012201/IMG-20260211-WA0034_lmgziv.jpg"
+        name: "Stargazer Astronaut Projector",
+        price: 999,
+        salePrice: 699,
+        image: ["https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771180439/Astronaut1_z7popc.jpg",
+          "https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771180438/Astronaut2_dbmnhs.jpg",
+          "https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771180441/Astronaut3_ougxkq.jpg"
         ],
-        description: "Purr-fectly adorable and unimaginably soft. This kitten doesn't need milk, just lots of hugs and love."
+        description: "Innovative astronaut-shaped projector that fills your room with stunning starry night displays.",
+        isOutOfStock: false
       },
-      {
+      { 
         id: "C5P2",
-        name: "Sleeping Kitten Dream",
-        price: 999,
-        salePrice: 549,
-        image: ["https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771012193/IMG-20260211-WA0022_ulpx0p.jpg"],
-      },
-    ]
-  },
-  {
-    id: "C6",
-    categoryName: 'mushroom',
-    products: [
-      {
-        id: "C6P1",
-        name: "Magical Mushroom Friend",
-        price: 899,
-        salePrice: 499,
-        image: ["https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771012190/IMG-20260211-WA0017_y7mbty.jpg"],
-        description: "Straight from a fairy tale, this magical mushroom is a whimsical addition to any collection. Soft, spotted, and simply delightful."
-      }
-    ]
-  },
-  {
-    id: "C7",
-    categoryName: 'owl',
-    products: [
-      {
-        id: "C7P1",
-        name: "Wise Owl Hootie",
-        price: 1199,
-        salePrice: 699,
-        image: ["https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771012199/IMG-20260211-WA0032_ic42j6.jpg"],
-        description: "Keep a watchful eye on your dreams with this wise owl. Its big, soft eyes and feathered texture make it a comforting nighttime companion."
-      }
-    ]
-  },
-  {
-    id: "C8",
-    categoryName: 'panda',
-    products: [
-      {
-        id: "C8P1",
-        name: "Panda with Cool Glasses",
-        price: 1099,
-        salePrice: 599,
-        image: ["https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771012202/IMG-20260211-WA0035_dpxfcq.jpg"],
-      },
-      {
-        id: "C8P2",
-        name: "Panda in Muffler",
-        price: 999,
-        salePrice: 549,
-        image: ["https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771012202/IMG-20260211-WA0036_sppdcm.jpg"],
-      },
-      {
-        id: "C8P3",
-        name: "Sleepy Panda Bear",
-        price: 1199,
-        salePrice: 699,
-        image: ["https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771012194/IMG-20260211-WA0024_x9l6md.jpg"],
-        description: "This panda is an expert at napping. Join him for a cozy afternoon sleep with his ultra-plush fur and relaxed pose."
-      },
-      {
-        id: "C8P4",
-        name: "Sad Panda Hugger",
-        price: 1099,
-        salePrice: 649,
-        image: ["https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771012190/IMG-20260211-WA0014_r9x1yd.jpg"],
-      },
-    ]
-  },
-  {
-    id: "C9",
-    categoryName: 'pumpkin',
-    products: [
-      {
-        id: "C9P1",
-        name: "Spooky Pumpkin Pal",
-        price: 999,
-        salePrice: 499,
-        image: ["https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771012206/IMG-20260211-WA0042_zzz265.jpg"],
-        description: "Not just for Halloween! This glowing pumpkin pal is a year-round festive favorite that adds a warm orange glow to your space."
-      },
-      {
-        id: "C9P2",
-        name: "Happy Pumpkin Buddy",
-        price: 1099,
-        salePrice: 599,
-        image: ["https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771012204/IMG-20260211-WA0039_xqbzdu.jpg"],
-      },
-    ]
-  },
-  {
-    id: "C10",
-    categoryName: 'puppy',
-    products: [
-      {
-        id: "C10P1",
-        name: "Lying Puppy Cuddle",
-        price: 1199,
-        salePrice: 699,
-        image: ["https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771012205/IMG-20260211-WA0040_ivbffs.jpg"],
-        description: "A loyal friend who's always ready for a belly rub. This lying puppy is designed for maximum cuddleability."
-      },
-      {
-        id: "C10P2",
-        name: "Puppy with Glasses",
-        price: 1099,
-        salePrice: 649,
-        image: ["https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771012198/IMG-20260211-WA0029_luoske.jpg"],
-      },
-      {
-        id: "C10P3",
-        name: "Smiling Puppy Joy",
-        price: 999,
-        salePrice: 549,
-        image: ["https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771012198/IMG-20260211-WA0030_cos0kt.jpg"],
-      },
-      {
-        id: "C10P4",
-        name: "Puppy in Hat",
-        price: 899,
-        salePrice: 499,
-        image: ["https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771012191/IMG-20260211-WA0019_skrwvt.jpg"],
-      },
-    ]
-  },
-  {
-    id: "C11",
-    categoryName: 'rabbit',
-    products: [
-      {
-        id: "C11P1",
-        name: "Bouncy Rabbit Friend",
-        price: 1099,
-        salePrice: 599,
-        image: ["https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771012190/IMG-20260211-WA0015_nj26zi.jpg"],
-        description: "Hop into happiness with this bouncy rabbit friend. Super tall ears and a twitchy nose make him irresistibly cute."
-      }
-    ]
-  },
-  {
-    id: "C12",
-    categoryName: 'shark',
-    products: [
-      {
-        id: "C12P1",
-        name: "Sharky Ocean Buddy",
-        price: 1199,
-        salePrice: 699,
-        image: ["https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771012196/IMG-20260211-WA0027_exu7co.jpg"],
-        description: "A shark that only wants to bite into big sandwiches and soft pillows. A tough-looking but tender-hearted ocean companion."
-      }
-    ]
-  },
-  {
-    id: "C13",
-    categoryName: 'sheep',
-    products: [
-      {
-        id: "C13P1",
-        name: "Fluffy Sheep Plush",
-        price: 999,
-        salePrice: 499,
-        image: ["https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771012196/IMG-20260211-WA0026_jqyfre.jpg"],
-        description: "Count sheep in the best way possible. This ultra-fluffy plush is like hugging a soft, warm cloud."
-      },
-      {
-        id: "C13P2",
-        name: "Sleeping Sheep Dream",
-        price: 1099,
-        salePrice: 649,
-        image: ["https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771012191/IMG-20260211-WA0016_kcwlar.jpg"],
-      }
-    ]
-  },
-  {
-    id: "C14",
-    categoryName: 'starfish',
-    products: [
-      {
-        id: "C14P1",
-        name: "Starfish Sea Treasure",
-        price: 899,
-        salePrice: 499,
-        image: ["https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771012190/IMG-20260211-WA0018_ty2rhc.jpg"],
-        description: "A star from the deep blue sea. This starfish plush adds a splash of color and a wave of comfort to your room."
-      }
-    ]
-  },
-  {
-    id: "C15",
-    categoryName: 'teddy',
-    products: [
-      {
-        id: "C15P1",
-        name: "Classic Teddy Bear",
-        price: 1199,
-        salePrice: 699,
-        image: ["https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771012203/IMG-20260211-WA0037_ph29e0.jpg"],
-        description: "The timeless symbol of comfort. This classic teddy bear is weighted perfectly for the best hugs ever."
-      },
-      {
-        id: "C15P2",
-        name: "Teddy with Heart",
-        price: 1099,
-        salePrice: 599,
-        image: ["https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771012203/IMG-20260211-WA0038_i9nmaw.jpg"],
-        description: "Wear your heart on your bear! This cuddly teddy holds a soft heart, making it the ultimate Valentine's surprise."
-      },
-      {
-        id: "C15P3",
-        name: "Teddy Love Hug",
-        price: 999,
-        salePrice: 549,
-        image: ["https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771012191/IMG-20260211-WA0020_kydawc.jpg"],
-      }
-    ]
-  },
-  {
-    id: "C16",
-    categoryName: 'turtle',
-    products: [
-      {
-        id: "C16P1",
-        name: "Turtle Shell Buddy",
-        price: 1199,
-        salePrice: 699,
-        image: ["https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771012207/IMG-20260211-WA0043_w9uzuz.jpg",
-          "https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771012199/IMG-20260211-WA0031_q7kdtm.jpg"
+        name: "Ocean Waves Projection Light",
+        price: 599,
+        salePrice: 399,
+        image: ["https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771180445/Water_Ripple_Night_Lamp_yhhamu.jpg",
+          "https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771180444/Water_Ripple_Night_Lamp_3_badgod.jpg",
+          "https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771180444/Water_Ripple_Night_Lamp_2_hp1ulq.jpg"
         ],
-        description: "Slow and steady wins the cuddle! This turtle shell buddy is soft, green, and ready for a slow-paced adventure."
-      }
-    ]
-  },
-  {
-    id: "C17",
-    categoryName: 'unicorn',
-    products: [
-      {
-        id: "C17P1",
-        name: "Magical Unicorn Dream",
-        price: 1299,
-        salePrice: 799,
-        image: ["https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771012208/IMG-20260211-WA0044_kvs9ry.jpg"],
-        description: "Add a pinch of magic to your life. This unicorn plush features a shimmering horn and a rainbow of comfort for all ages."
+        description: "Soothing water ripple projection light that creates calming wave patterns for relaxation.",
+        isOutOfStock: false
       }
     ]
   }
