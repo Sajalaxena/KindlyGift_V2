@@ -43,11 +43,11 @@ export default function ProductDetailPage() {
 
           {/* Details */}
           <div className="glass rounded-3xl p-8">
-            <h1 className="text-3xl font-bold text-pink-600 mb-4">{product.name}</h1>
+            <h1 className="text-3xl font-bold text-[#d14073] mb-4">{product.name}</h1>
 
             <div className="flex items-center gap-3 mb-6">
               <span className="line-through text-gray-500 text-xl">₹{product.price}</span>
-              <span className="text-pink-600 font-bold text-3xl">₹{product.salePrice}</span>
+              <span className="text-[#d14073] font-bold text-3xl">₹{product.salePrice}</span>
             </div>
 
             <p className="text-gray-700 mb-6">

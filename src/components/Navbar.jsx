@@ -32,7 +32,7 @@ export default function Navbar({ onCartClick }) {
           >
             <img src="/Kindly_gift.png" alt="KindlyGift" width={40} height={40} className="rounded-full" />
 
-            <span className="font-heading text-2xl text-pink-600">
+            <span className="font-heading text-3xl font-extrabold text-[#d14073] tracking-wide">
               KindlyGift
             </span>
           </div>
@@ -46,8 +46,8 @@ export default function Navbar({ onCartClick }) {
             py-2 
             rounded-full 
             bg-gradient-to-r 
-            from-pink-500 
-            to-rose-500 
+            from-[#f29ab8] 
+            to-[#d14073] 
             text-white 
             font-medium 
             shadow-lg

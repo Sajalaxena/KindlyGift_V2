@@ -19,34 +19,28 @@ export default function HomePage() {
         {/* ================= PRODUCTS SECTION ================= */}
         <section className="max-w-7xl mx-auto px-6 ">
           <div className="mb-16 text-center">
-            <h2 className="font-heading text-4xl md:text-5xl text-pink-600">
-              Valentine's Bestsellers
+            <h2 className="font-heading text-4xl md:text-5xl text-[#d14073]">
+              Women's Day Bestsellers
             </h2>
             <p className="mt-4 text-lg text-gray-700 max-w-xl mx-auto">
-              Thoughtfully crafted glowing gifts to make your loved one feel special.
+              Thoughtfully crafted glowing gifts to make her feel special.
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12">
-            {products.flatMap(cat => cat.products).slice(0, 3).map((p) => (
+            {products.flatMap(cat => cat.products).map((p) => (
               <ProductCard key={p.id} product={p} />
             ))}
           </div>
 
-          <div className="mt-16 text-center">
-            <button
-              onClick={() => navigate("/products")}
-              className="px-10 py-4 rounded-full bg-white text-pink-600 font-bold border-2 border-pink-200 hover:bg-pink-50 hover:border-pink-300 transition-all shadow-lg hover:scale-105"
-            >
-              Explore All Products →
-            </button>
-          </div>
+          {/* Spacer instead of button */}
+          <div className="mt-16"></div>
         </section>
 
         {/* ================= WHY KINDLYGIFT ================= */}
         <section className="max-w-6xl mx-auto px-6 py-24">
           <div className="glass rounded-3xl p-12 text-center">
-            <h3 className="font-heading text-3xl md:text-4xl text-pink-600">
+            <h3 className="font-heading text-3xl md:text-4xl text-[#d14073]">
               Why KindlyGift?
             </h3>
 

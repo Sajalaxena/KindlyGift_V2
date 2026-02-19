@@ -7,15 +7,15 @@ import {
 export default function Footer() {
   return (
     <footer className="relative mt-28">
-      
+
       {/* Soft divider */}
       <div className="h-px w-full bg-gradient-to-r from-transparent via-pink-400/40 to-transparent mb-12" />
 
       <div className="glass max-w-7xl mx-auto px-8 py-16 rounded-t-3xl text-gray-700">
-        
+
         {/* Brand */}
         <div className="text-center max-w-2xl mx-auto">
-          <h3 className="font-heading text-3xl md:text-4xl text-pink-600 flex items-center justify-center gap-2">
+          <h3 className="font-heading text-3xl md:text-4xl text-[#d14073] flex items-center justify-center gap-2">
             KindlyGift <FaHeart className="text-pink-500" />
           </h3>
 
@@ -30,7 +30,7 @@ export default function Footer() {
 
         {/* Social icons */}
         <div className="flex justify-center gap-8 mt-12">
-          
+
           <SocialIcon href="https://www.instagram.com/kindly._.gift?igsh=N2FidG9wcjdwdTR6" label="Instagram">
             <FaInstagram />
           </SocialIcon>

@@ -26,15 +26,15 @@ export function CartProvider({ children }) {
     localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
   }, [cart]);
 
-  const addToCart = (product) => {
+  const addToCart = (product, quantity = 1) => {
     setCart((prev) => {
       const exists = prev.find((p) => p.id === product.id);
       if (exists) {
         return prev.map((p) =>
-          p.id === product.id ? { ...p, qty: p.qty + 1 } : p
+          p.id === product.id ? { ...p, qty: p.qty + quantity } : p
         );
       }
-      return [...prev, { ...product, qty: 1 }];
+      return [...prev, { ...product, qty: quantity }];
     });
   };
 

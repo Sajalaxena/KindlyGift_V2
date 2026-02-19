@@ -12,10 +12,10 @@ export default function ValentineBackground() {
     const symbols = ['❤️', '💖', '💝', '🎁', '✨', '💕', '💗', '💘'];
 
     const colors = [
-      { r: 255, g: 77, b: 109 },   // Romantic pink
-      { r: 255, g: 99, b: 132 },   // Rose
-      { r: 236, g: 72, b: 153 },   // Magenta
-      { r: 255, g: 153, b: 204 },  // Soft pink
+      { r: 244, g: 194, b: 194 },  // Baby Pink
+      { r: 253, g: 242, b: 242 },  // Very light pink
+      { r: 251, g: 200, b: 200 },  // Soft pink
+      { r: 224, g: 144, b: 144 },  // Darker baby pink
     ];
 
     const resize = () => {

@@ -142,7 +142,7 @@ export default function Checkout({ onClose, onOrderSuccess }) {
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-200 via-rose-200 to-purple-200">
       {/* Header */}
-      <div className="bg-pink-600 text-white p-4 sticky top-0 z-40 shadow-lg">
+      <div className="bg-[#d14073] text-white p-4 sticky top-0 z-40 shadow-lg">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <h1 className="text-2xl font-bold">Checkout</h1>
           <button
@@ -182,12 +182,12 @@ export default function Checkout({ onClose, onOrderSuccess }) {
                         <div className="flex-1">
                           <h4 className="font-bold text-gray-800">{item.name}</h4>
                           <p className="text-gray-600 text-sm mt-1">
-                            Quantity: <span className="font-semibold text-pink-600">{item.qty}</span>
+                            Quantity: <span className="font-semibold text-[#d14073]">{item.qty}</span>
                           </p>
                           <p className="text-gray-600 text-sm">
                             Per Unit Price: <span className="font-semibold">₹{item.salePrice}</span>
                           </p>
-                          <p className="text-pink-600 font-bold text-lg mt-2">
+                          <p className="text-[#d14073] font-bold text-lg mt-2">
                             ₹{(item.salePrice * item.qty).toFixed(2)}
                           </p>
                         </div>
@@ -217,7 +217,7 @@ export default function Checkout({ onClose, onOrderSuccess }) {
                     </div>
                   )}
 
-                  <div className="border-t border-gray-300 pt-3 flex justify-between font-bold text-lg text-pink-600">
+                  <div className="border-t border-gray-300 pt-3 flex justify-between font-bold text-lg text-[#d14073]">
                     <span>Total:</span>
                     <span>₹{grandTotal.toFixed(2)}</span>
                   </div>
@@ -253,7 +253,7 @@ export default function Checkout({ onClose, onOrderSuccess }) {
                 placeholder="Full Name *"
                 value={formData.customerName}
                 onChange={handleInputChange}
-                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-600 transition-all"
+                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#d14073] transition-all"
               />
 
               <input
@@ -262,7 +262,7 @@ export default function Checkout({ onClose, onOrderSuccess }) {
                 placeholder="Email Address *"
                 value={formData.customerEmail}
                 onChange={handleInputChange}
-                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-600 transition-all"
+                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#d14073] transition-all"
               />
 
               <input
@@ -272,7 +272,7 @@ export default function Checkout({ onClose, onOrderSuccess }) {
                 value={formData.customerMobile}
                 onChange={handleInputChange}
                 maxLength="10"
-                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-600 transition-all"
+                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#d14073] transition-all"
               />
 
               <textarea
@@ -281,7 +281,7 @@ export default function Checkout({ onClose, onOrderSuccess }) {
                 value={formData.address}
                 onChange={handleInputChange}
                 rows="4"
-                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-600 transition-all resize-none"
+                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#d14073] transition-all resize-none"
               />
 
               <input
@@ -291,7 +291,7 @@ export default function Checkout({ onClose, onOrderSuccess }) {
                 value={formData.pinCode}
                 onChange={handleInputChange}
                 maxLength="6"
-                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-600 transition-all"
+                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#d14073] transition-all"
               />
 
               {/* Coupon Section */}
@@ -334,7 +334,7 @@ export default function Checkout({ onClose, onOrderSuccess }) {
               <button
                 onClick={handlePlaceOrder}
                 disabled={isLoading || cart.length === 0}
-                className="w-full bg-pink-600 text-white py-4 rounded-lg font-bold text-lg hover:bg-pink-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors mt-8 cursor-pointer"
+                className="w-full bg-[#d14073] text-white py-4 rounded-lg font-bold text-lg hover:bg-[#b02a5a] disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors mt-8 cursor-pointer"
               >
                 {isLoading ? "Placing Order..." : "Place Order (COD)"}
               </button>

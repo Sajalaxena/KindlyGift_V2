@@ -2,13 +2,14 @@ import { useState } from "react";
 import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import HomePage from "./pages/HomePage";
-import ProductsPage from "./pages/ProductsPage";
 import ProductDetailPage from "./pages/ProductDetailPage";
 import CheckoutPage from "./pages/CheckoutPage";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import CartDrawer from "./components/CartDrawer";
 import ValentineBackground from "./components/ValentineBackground";
+
+import ScrollToTop from "./components/ScrollToTop";
 
 export default function App() {
   const [showCart, setShowCart] = useState(false);
@@ -23,6 +24,7 @@ export default function App() {
 
   return (
     <div className="relative min-h-screen">
+      <ScrollToTop />
       {/* Ambient animated background */}
       <ValentineBackground />
 
@@ -32,7 +34,6 @@ export default function App() {
         <main className="flex-1">
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/products" element={<ProductsPage />} />
             <Route path="/product/:id" element={<ProductDetailPage />} />
             <Route path="/checkout" element={<CheckoutPage />} />
           </Routes>

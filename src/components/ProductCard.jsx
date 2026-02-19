@@ -1,16 +1,19 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import QuantityControl from "./QuantityControl";
+
 import { useCart } from "../context/CartContext";
 import ImageSlider from "./ImageSlider";
+import { useNavigate } from "react-router-dom";
 
 export default function ProductCard({ product }) {
   const { addToCart } = useCart();
   const [qty, setQty] = useState(1);
   const [isAdded, setIsAdded] = useState(false);
+  const navigate = useNavigate();
 
-  const handleAddToCart = () => {
-    addToCart(product);
+  const handleAddToCart = (e) => {
+    e.stopPropagation();
+    addToCart(product, 1);
     setIsAdded(true);
     setTimeout(() => setIsAdded(false), 1500);
   };
@@ -20,7 +23,8 @@ export default function ProductCard({ product }) {
   return (
     <motion.div
       whileHover={{ y: -8 }}
-      className="glass rounded-3xl shadow-xl overflow-hidden p-4 border border-gray-200/20"
+      onClick={() => navigate(`/product/${product.id}`)}
+      className="glass rounded-3xl shadow-xl overflow-hidden p-4 border border-gray-200/20 cursor-pointer flex flex-col"
     >
       {images.length > 1 ? (
         <ImageSlider images={images} height="h-56" />
@@ -35,22 +39,21 @@ export default function ProductCard({ product }) {
 
       <div className="flex items-center gap-3 mt-2">
         <span className="line-through text-gray-500">₹{product.price}</span>
-        <span className="text-pink-600 font-bold text-xl">
+        <span className="text-[#d14073] font-bold text-xl">
           ₹{product.salePrice}
         </span>
       </div>
 
-      <span className="text-sm text-white px-3 py-1 rounded-full bg-pink-500 inline-block mt-2 offer-glow">
-        Valentine Offer
-      </span>
+      <div className="mt-2">
+        <span className="text-sm text-[#d14073] font-bold px-3 py-1 rounded-full bg-[#ffcce3] inline-block offer-glow">
+          Women's Day Special
+        </span>
+      </div>
 
       <button
         onClick={handleAddToCart}
-        className={`w-full mt-4 py-2 rounded-full font-bold text-white transition-all cursor-pointer ${
-          isAdded
-            ? "bg-green-500"
-            : "bg-pink-600 hover:bg-pink-700"
-        }`}
+        className={`w-full mt-4 py-3 rounded-full font-bold text-white transition-all cursor-pointer shadow-md ${isAdded ? "bg-green-500" : "bg-[#d14073] hover:bg-[#b02a5a] hover:shadow-lg"
+          }`}
       >
         {isAdded ? "✓ Added to Cart" : "+ Add to Cart"}
       </button>

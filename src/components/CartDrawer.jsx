@@ -3,7 +3,7 @@ import { useCart } from "../context/CartContext";
 
 export default function CartDrawer({ onCheckout, onClose }) {
   const { cart, removeFromCart, updateQuantity, total } = useCart();
-  
+
   const deliveryCharge = total < 999 ? 49 : 0;
   const grandTotal = total + deliveryCharge;
 
@@ -62,7 +62,7 @@ export default function CartDrawer({ onCheckout, onClose }) {
                       </div>
                       <button
                         onClick={() => removeFromCart(item.id)}
-                        className="text-pink-600 hover:text-pink-700 text-lg cursor-pointer"
+                        className="text-[#d14073] hover:text-[#b02a5a] text-lg cursor-pointer"
                         aria-label={`Remove ${item.name}`}
                       >
                         ✕
@@ -114,13 +114,13 @@ export default function CartDrawer({ onCheckout, onClose }) {
               <div className="mb-4 bg-pink-50 p-3 rounded-lg">
                 <div className="flex justify-between items-center">
                   <p className="font-semibold text-gray-800">Total:</p>
-                  <p className="text-2xl font-bold text-pink-600">₹{grandTotal.toFixed(2)}</p>
+                  <p className="text-2xl font-bold text-[#d14073]">₹{grandTotal.toFixed(2)}</p>
                 </div>
               </div>
 
               <button
                 onClick={onCheckout}
-                className="w-full bg-pink-600 text-white py-3 rounded-lg font-bold hover:bg-pink-700 transition-colors cursor-pointer"
+                className="w-full bg-[#d14073] text-white py-3 rounded-lg font-bold hover:bg-[#b02a5a] transition-colors cursor-pointer"
               >
                 Checkout
               </button>
