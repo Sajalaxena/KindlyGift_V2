@@ -39,20 +39,20 @@ export default function ProductCard({ product }) {
 
       <div className="flex items-center gap-3 mt-2">
         <span className="line-through text-gray-500">₹{product.price}</span>
-        <span className="text-[#d14073] font-bold text-xl">
+        <span className="text-[#d65a8d] font-bold text-xl">
           ₹{product.salePrice}
         </span>
       </div>
 
       <div className="mt-2">
-        <span className="text-sm text-[#d14073] font-bold px-3 py-1 rounded-full bg-[#ffcce3] inline-block offer-glow">
+        <span className="text-sm text-[#d65a8d] font-bold px-3 py-1 rounded-full bg-[#ffc8dd] inline-block offer-glow">
           Women's Day Special
         </span>
       </div>
 
       <button
         onClick={handleAddToCart}
-        className={`w-full mt-4 py-3 rounded-full font-bold text-white transition-all cursor-pointer shadow-md ${isAdded ? "bg-green-500" : "bg-[#d14073] hover:bg-[#b02a5a] hover:shadow-lg"
+        className={`w-full mt-4 py-3 rounded-full font-bold text-white transition-all cursor-pointer shadow-md ${isAdded ? "bg-green-500" : "bg-[#d65a8d] hover:bg-[#b03a6b] hover:shadow-lg"
           }`}
       >
         {isAdded ? "✓ Added to Cart" : "+ Add to Cart"}

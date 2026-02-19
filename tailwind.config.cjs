@@ -5,15 +5,15 @@ module.exports = {
     extend: {
       colors: {
         'baby-pink': {
-          DEFAULT: '#f8c8dc',
-          50: '#fff5f9',
-          100: '#ffe8f2',
-          200: '#ffcce3',
-          300: '#f8c8dc', // The user requested color
-          400: '#f29ab8',
-          500: '#e86a95',
-          600: '#d14073', // Darker for text/buttons
-          700: '#b02a5a',
+          DEFAULT: '#ffc8dd',
+          50: '#fff5fa',
+          100: '#ffe8f5',
+          200: '#ffd1e8',
+          300: '#ffc8dd', // The user requested color
+          400: '#ff9ec5',
+          500: '#ff7eb0',
+          600: '#d65a8d', // Darker for text/buttons
+          700: '#b03a6b',
         }
       },
       fontFamily: {

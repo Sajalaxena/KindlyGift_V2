@@ -15,7 +15,7 @@ export default function Hero() {
         transition={{ duration: 0.8 }}
         className="glass rounded-3xl p-8"
       >
-        <h1 className="text-4xl md:text-5xl font-extrabold text-[#d14073]">
+        <h1 className="text-4xl md:text-5xl font-extrabold text-[#d65a8d]">
           Women's Day Special 💖
         </h1>
 
@@ -29,7 +29,7 @@ export default function Hero() {
 
         <button
           onClick={() => navigate('/products')}
-          className="mt-6 px-8 py-3 rounded-full bg-[#d14073] text-white text-lg font-semibold hover:scale-105 transition cursor-pointer"
+          className="mt-6 px-8 py-3 rounded-full bg-[#d65a8d] text-white text-lg font-semibold hover:scale-105 transition cursor-pointer"
         >
           Shop Now
         </button>

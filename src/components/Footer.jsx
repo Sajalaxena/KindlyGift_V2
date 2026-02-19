@@ -15,7 +15,7 @@ export default function Footer() {
 
         {/* Brand */}
         <div className="text-center max-w-2xl mx-auto">
-          <h3 className="font-heading text-3xl md:text-4xl text-[#d14073] flex items-center justify-center gap-2">
+          <h3 className="font-heading text-3xl md:text-4xl text-[#d65a8d] flex items-center justify-center gap-2">
             KindlyGift <FaHeart className="text-pink-500" />
           </h3>
 

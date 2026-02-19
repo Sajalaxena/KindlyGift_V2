@@ -19,7 +19,7 @@ export default function HomePage() {
         {/* ================= PRODUCTS SECTION ================= */}
         <section className="max-w-7xl mx-auto px-6 ">
           <div className="mb-16 text-center">
-            <h2 className="font-heading text-4xl md:text-5xl text-[#d14073]">
+            <h2 className="font-heading text-4xl md:text-5xl text-[#d65a8d]">
               Women's Day Bestsellers
             </h2>
             <p className="mt-4 text-lg text-gray-700 max-w-xl mx-auto">
@@ -40,7 +40,7 @@ export default function HomePage() {
         {/* ================= WHY KINDLYGIFT ================= */}
         <section className="max-w-6xl mx-auto px-6 py-24">
           <div className="glass rounded-3xl p-12 text-center">
-            <h3 className="font-heading text-3xl md:text-4xl text-[#d14073]">
+            <h3 className="font-heading text-3xl md:text-4xl text-[#d65a8d]">
               Why KindlyGift?
             </h3>
 
