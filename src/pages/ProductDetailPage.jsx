@@ -9,6 +9,13 @@ export default function ProductDetailPage() {
   const navigate = useNavigate();
   const { addToCart } = useCart();
   const [isAdded, setIsAdded] = useState(false);
+  const [activeTab, setActiveTab] = useState("description");
+
+  // Calculate discount percentage
+  const getDiscountPercentage = (price, salePrice) => {
+    if (!price || !salePrice || price <= salePrice) return null;
+    return Math.round(((price - salePrice) / price) * 100);
+  };
 
   // Find the product
   const product = products.flatMap(cat => cat.products).find(p => p.id === id);
@@ -24,6 +31,7 @@ export default function ProductDetailPage() {
   };
 
   const images = Array.isArray(product.image) ? product.image : [product.image];
+  const discount = getDiscountPercentage(product.price, product.salePrice);
 
   return (
     <div className="p-6">
@@ -43,16 +51,24 @@ export default function ProductDetailPage() {
 
           {/* Details */}
           <div className="glass rounded-3xl p-8">
-            <h1 className="text-3xl font-bold text-[#d65a8d] mb-4">{product.name}</h1>
+            {/* Title - optimized for mobile to stay on one line where possible */}
+            <h1 className="text-2xl sm:text-3xl font-bold text-[#d65a8d] mb-4 truncate">
+              {product.name}
+            </h1>
 
-            <div className="flex items-center gap-3 mb-6">
-              <span className="line-through text-gray-500 text-xl">₹{product.price}</span>
-              <span className="text-[#d65a8d] font-bold text-3xl">₹{product.salePrice}</span>
+            <div className="flex items-center flex-wrap gap-3 mb-6">
+              <span className="text-[#d65a8d] font-bold text-3xl">
+                ₹{product.salePrice}
+              </span>
+              <span className="line-through text-gray-500 text-xl">
+                ₹{product.price}
+              </span>
+              {discount !== null && (
+                <span className="text-sm font-semibold text-green-600 bg-green-50 px-3 py-1 rounded-md border border-green-500">
+                  {discount}% OFF
+                </span>
+              )}
             </div>
-
-            <p className="text-gray-700 mb-6">
-              {product.description || `A perfect Valentine's gift to express your love. This adorable ${product.name.toLowerCase()} will light up their day!`}
-            </p>
 
             <button
               onClick={handleAddToCart}
@@ -63,6 +79,103 @@ export default function ProductDetailPage() {
             >
               {isAdded ? "✓ Added to Cart" : "+ Add to Cart"}
             </button>
+          </div>
+        </div>
+
+        {/* Tabbed information section: Description / Product Info / More Info */}
+        <div className="glass rounded-3xl p-6">
+          {/* Tabs header */}
+          <div className="border-b border-gray-200">
+            <div className="flex gap-6 text-sm sm:text-base">
+              <button
+                type="button"
+                onClick={() => setActiveTab("description")}
+                className={`pb-2 transition-colors ${activeTab === "description"
+                  ? "border-b-2 border-gray-900 text-gray-900 font-semibold"
+                  : "border-b-2 border-transparent text-gray-500"
+                  }`}
+              >
+                Description
+              </button>
+              <button
+                type="button"
+                onClick={() => setActiveTab("info")}
+                className={`pb-2 transition-colors ${activeTab === "info"
+                  ? "border-b-2 border-gray-900 text-gray-900 font-semibold"
+                  : "border-b-2 border-transparent text-gray-500"
+                  }`}
+              >
+                Product Info
+              </button>
+              <button
+                type="button"
+                onClick={() => setActiveTab("more")}
+                className={`pb-2 transition-colors ${activeTab === "more"
+                  ? "border-b-2 border-gray-900 text-gray-900 font-semibold"
+                  : "border-b-2 border-transparent text-gray-500"
+                  }`}
+              >
+                More Info
+              </button>
+            </div>
+          </div>
+
+          {/* Tabs content */}
+          <div className="mt-4 text-sm sm:text-base text-gray-700">
+            {activeTab === "description" && (
+              <p>
+                {product.description ||
+                  `A perfect Valentine's gift to express your love. This adorable ${product.name.toLowerCase()} will light up their day!`}
+              </p>
+            )}
+
+            {activeTab === "info" && (
+              <dl className="space-y-2">
+                <div className="flex gap-4">
+                  <dt className="w-28 text-gray-500">Name</dt>
+                  <dd className="flex-1 text-gray-800">{product.name}</dd>
+                </div>
+                {product.material && (
+                  <div className="flex gap-4">
+                    <dt className="w-28 text-gray-500">Material</dt>
+                    <dd className="flex-1 text-gray-800">{product.material}</dd>
+                  </div>
+                )}
+                <div className="flex gap-4">
+                  <dt className="w-28 text-gray-500">Price</dt>
+                  <dd className="flex-1 text-gray-800">
+                    ₹{product.salePrice}{" "}
+                    <span className="line-through text-gray-400 ml-1 text-sm">
+                      ₹{product.price}
+                    </span>
+                    {discount !== null && (
+                      <span className="ml-2 text-xs font-semibold text-green-600">
+                        ({discount}% OFF)
+                      </span>
+                    )}
+                  </dd>
+                </div>
+                <div className="flex gap-4">
+                  <dt className="w-28 text-gray-500">Availability</dt>
+                  <dd className="flex-1 text-gray-800">
+                    {product.isOutOfStock ? "Out of stock" : "In stock"}
+                  </dd>
+                </div>
+              </dl>
+            )}
+
+            {activeTab === "more" && (
+              <div>
+                <h3 className="font-semibold text-gray-900 mb-2">Delivery Info</h3>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li>Delivered product might vary slightly from the image shown.</li>
+                  <li>
+                    This product is delicate; therefore, delivery will be attempted only once.
+                  </li>
+                  <li>The delivery cannot be redirected to any other address.</li>
+                </ul>
+              </div>
+            )}
           </div>
         </div>
       </div>
