@@ -12,12 +12,12 @@ export default function HomePage() {
       <div className="relative z-10">
 
         {/* ================= HERO SECTION ================= */}
-        <section className="max-w-7xl mx-auto px-6 pt-16 pb-24">
+        <section className="w-full">
           <Hero />
         </section>
 
         {/* ================= PRODUCTS SECTION ================= */}
-        <section className="max-w-7xl mx-auto px-6 ">
+        <section id="products-section" className="max-w-7xl mx-auto px-6 pt-12">
           <div className="mb-16 text-center">
             <h2 className="font-heading text-4xl md:text-5xl text-[#d65a8d]">
               Women's Day Bestsellers

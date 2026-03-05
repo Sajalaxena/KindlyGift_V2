@@ -1,47 +1,84 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import ImageSlider from "./ImageSlider";
 
 export default function Hero() {
   const navigate = useNavigate();
+  const [index, setIndex] = useState(0);
+
+  const images = [
+    "/banners/hero1.png",
+    "/banners/hero2.png"
+  ];
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setIndex((prev) => (prev + 1) % images.length);
+    }, 5000);
+    return () => clearInterval(id);
+  }, [images.length]);
 
   return (
-    <section className="relative z-10 max-w-7xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-12 items-center">
+    <div className="relative w-full h-[80vh] min-h-[500px] overflow-hidden">
+      {/* Background Slider */}
+      <AnimatePresence>
+        <motion.img
+          key={index}
+          src={images[index]}
+          initial={{ opacity: 0, scale: 1.05 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1.2, ease: "easeInOut" }}
+          className="absolute inset-0 w-full h-full object-cover"
+          alt="Hero Background"
+        />
+      </AnimatePresence>
 
-      {/* Left */}
-      <motion.div
-        initial={{ opacity: 0, x: -60 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8 }}
-        className="glass rounded-3xl p-8"
-      >
-        <h1 className="text-4xl md:text-5xl font-extrabold text-[#d65a8d]">
-          Women's Day Special 💖
-        </h1>
+      {/* Gradient Overlays for Readability */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-transparent z-10" />
+      <div className="absolute inset-0 bg-gradient-to-t from-gray-50/100 via-transparent to-transparent z-10" />
 
-        <p className="mt-4 text-lg text-gray-700">
-          Express love with glowing gifts that stay forever in memories.
-        </p>
-
-        <p className="mt-3 text-xl font-bold text-rose-600">
-          Flat 50% OFF – Limited Time Only!
-        </p>
-
-        <button
-          onClick={() => navigate('/products')}
-          className="mt-6 px-8 py-3 rounded-full bg-[#d65a8d] text-white text-lg font-semibold hover:scale-105 transition cursor-pointer"
+      {/* Hero Content */}
+      <div className="relative z-20 h-full max-w-7xl mx-auto px-6 flex items-center">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="max-w-xl p-8 rounded-3xl backdrop-blur-md bg-white/20 border border-white/30 shadow-2xl"
         >
-          Shop Now
-        </button>
-      </motion.div>
+          <div className="inline-block px-4 py-1 rounded-full bg-pink-500/90 text-white font-semibold text-sm mb-6 tracking-wide uppercase shadow-sm">
+            Exclusive Collection
+          </div>
 
-      {/* Right */}
-      <ImageSlider
-        images={[
-          "https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771012200/IMG-20260211-WA0033_ziot6l.jpg",
-          "https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771012196/IMG-20260211-WA0027_exu7co.jpg"
-        ]}
-      />
-    </section>
+          <h1 className="text-4xl md:text-6xl font-extrabold text-white leading-tight drop-shadow-md">
+            Gifts That <br className="hidden md:block" />
+            <span className="text-pink-300">Glow With Love</span>.
+          </h1>
+
+          <p className="mt-6 text-lg text-white/90 drop-shadow max-w-lg leading-relaxed font-medium">
+            Discover our premium silicone night lights. The perfect emotional, warm gift to make them smile every night.
+          </p>
+
+          <div className="mt-8 flex items-center gap-4">
+            <button
+              onClick={() => {
+                const isHome = window.location.pathname === '/';
+                const el = document.getElementById('products-section');
+
+                if (isHome && el) {
+                  el.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                  navigate('/products');
+                }
+              }}
+              className="px-8 py-3.5 rounded-full bg-white text-pink-600 outline-none text-lg font-bold hover:bg-pink-50 hover:scale-105 transition-all shadow-[0_0_20px_rgba(255,255,255,0.4)] flex items-center gap-2"
+            >
+              Shop Collection
+              <span className="text-xl">✨</span>
+            </button>
+          </div>
+        </motion.div>
+      </div>
+    </div>
   );
 }
