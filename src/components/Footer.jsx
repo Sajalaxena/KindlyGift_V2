@@ -31,7 +31,7 @@ export default function Footer() {
         {/* Social icons */}
         <div className="flex justify-center gap-8 mt-12">
 
-          <SocialIcon href="https://www.instagram.com/kindly._.gift?igsh=N2FidG9wcjdwdTR6" label="Instagram">
+          <SocialIcon href="https://www.instagram.com/kindlygift.in?igsh=MWMwazk2bDQycjE5Ng==" label="Instagram">
             <FaInstagram />
           </SocialIcon>
 
@@ -46,10 +46,10 @@ export default function Footer() {
           <p>
             Contact us:{" "}
             <a
-              href="mailto:help@kindlygift.com"
+              href="mailto:help.kindlygift@gmail.com"
               className="text-pink-600 font-medium hover:underline"
             >
-              help@kindlygift.com
+              help.kindlygift@gmail.com
             </a>
           </p>
         </div>
