@@ -11,6 +11,11 @@ export default function ProductCard({ product }) {
   const [isAdded, setIsAdded] = useState(false);
   const navigate = useNavigate();
 
+  const getDiscountPercentage = (price, salePrice) => {
+    if (!price || !salePrice || price <= salePrice) return null;
+    return Math.round(((price - salePrice) / price) * 100);
+  };
+
   const handleAddToCart = (e) => {
     e.stopPropagation();
     addToCart(product, 1);
@@ -19,6 +24,7 @@ export default function ProductCard({ product }) {
   };
 
   const images = Array.isArray(product.image) ? product.image : [product.image];
+  const discount = getDiscountPercentage(product.price, product.salePrice);
 
   return (
     <motion.div
@@ -35,13 +41,22 @@ export default function ProductCard({ product }) {
         />
       )}
 
-      <h3 className="mt-4 font-bold text-lg">{product.name}</h3>
+      <h3 className="mt-4 font-bold text-base sm:text-lg truncate">
+        {product.name}
+      </h3>
 
-      <div className="flex items-center gap-3 mt-2">
-        <span className="line-through text-gray-500">₹{product.price}</span>
-        <span className="text-[#d65a8d] font-bold text-xl">
+      <div className="flex items-center flex-wrap gap-2 mt-2">
+        <span className="text-[#d65a8d] font-bold text-lg sm:text-xl">
           ₹{product.salePrice}
         </span>
+        <span className="line-through text-gray-500 text-sm sm:text-base">
+          ₹{product.price}
+        </span>
+        {discount !== null && (
+          <span className="text-xs sm:text-sm font-semibold text-green-600 bg-green-50 px-2 py-0.5 rounded-md border border-green-500">
+            {discount}% OFF
+          </span>
+        )}
       </div>
 
       <div className="mt-2">
