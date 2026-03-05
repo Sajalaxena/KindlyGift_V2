@@ -9,7 +9,6 @@ export default function ProductDetailPage() {
   const navigate = useNavigate();
   const { addToCart } = useCart();
   const [isAdded, setIsAdded] = useState(false);
-<<<<<<< Updated upstream
   const [activeTab, setActiveTab] = useState("description");
 
   // Calculate discount percentage
@@ -17,9 +16,6 @@ export default function ProductDetailPage() {
     if (!price || !salePrice || price <= salePrice) return null;
     return Math.round(((price - salePrice) / price) * 100);
   };
-=======
-  const [activeTab, setActiveTab] = useState('description');
->>>>>>> Stashed changes
 
   // Find the product
   const product = products.flatMap(cat => cat.products).find(p => p.id === id);
@@ -55,32 +51,21 @@ export default function ProductDetailPage() {
 
           {/* Details */}
           <div className="glass rounded-3xl p-8">
-<<<<<<< Updated upstream
             {/* Title - optimized for mobile to stay on one line where possible */}
-            <h1 className="text-2xl sm:text-3xl font-bold text-[#d65a8d] mb-4 truncate">
+            <h1 className="text-2xl sm:text-3xl font-bold text-[#d65a8d] mb-4 leading-tight">
               {product.name}
             </h1>
 
-            <div className="flex items-center flex-wrap gap-3 mb-6">
-              <span className="text-[#d65a8d] font-bold text-3xl">
+            <div className="flex items-center flex-wrap gap-3 mb-8">
+              <span className="text-3xl font-bold text-gray-900">
                 ₹{product.salePrice}
               </span>
               <span className="line-through text-gray-500 text-xl">
                 ₹{product.price}
               </span>
               {discount !== null && (
-                <span className="text-sm font-semibold text-green-600 bg-green-50 px-3 py-1 rounded-md border border-green-500">
-                  {discount}% OFF
-=======
-            <h1 className="text-3xl font-bold text-[#d65a8d] mb-4 leading-tight">{product.name}</h1>
-
-            <div className="flex items-center gap-3 mb-8">
-              <span className="text-3xl font-bold text-gray-900">₹{product.salePrice}</span>
-              <span className="line-through text-gray-500 text-xl">₹{product.price}</span>
-              {product.price > product.salePrice && (
                 <span className="text-green-600 border border-green-600 bg-green-50 font-semibold px-2 py-1 rounded text-sm tracking-wide">
-                  {Math.round(((product.price - product.salePrice) / product.price) * 100)}% OFF
->>>>>>> Stashed changes
+                  {discount}% OFF
                 </span>
               )}
             </div>
@@ -97,9 +82,8 @@ export default function ProductDetailPage() {
           </div>
         </div>
 
-<<<<<<< Updated upstream
         {/* Tabbed information section: Description / Product Info / More Info */}
-        <div className="glass rounded-3xl p-6">
+        <div className="glass rounded-3xl p-6 mt-8">
           {/* Tabs header */}
           <div className="border-b border-gray-200">
             <div className="flex gap-6 text-sm sm:text-base">
@@ -186,52 +170,8 @@ export default function ProductDetailPage() {
                 <ul className="list-disc pl-5 space-y-1">
                   <li>Delivered product might vary slightly from the image shown.</li>
                   <li>
-                    This product is delicate; therefore, delivery will be attempted only once.
+                    This product is perishable therefore delivery will be attempted only once.
                   </li>
-=======
-        {/* Tabs Section */}
-        <div className="mt-12 bg-white rounded-2xl shadow-sm border border-pink-100 overflow-hidden">
-          <div className="flex border-b border-pink-100 mb-6 px-4 overflow-x-auto hide-scrollbar">
-            <button
-              onClick={() => setActiveTab('description')}
-              className={`py-4 px-6 font-semibold border-b-2 transition-colors whitespace-nowrap ${activeTab === 'description' ? 'border-[#d65a8d] text-[#d65a8d]' : 'border-transparent text-gray-500 hover:text-gray-700'}`}
-            >
-              Description
-            </button>
-            <button
-              onClick={() => setActiveTab('productInfo')}
-              className={`py-4 px-6 font-semibold border-b-2 transition-colors whitespace-nowrap ${activeTab === 'productInfo' ? 'border-[#d65a8d] text-[#d65a8d]' : 'border-transparent text-gray-500 hover:text-gray-700'}`}
-            >
-              Product Info
-            </button>
-            <button
-              onClick={() => setActiveTab('moreInfo')}
-              className={`py-4 px-6 font-semibold border-b-2 transition-colors whitespace-nowrap ${activeTab === 'moreInfo' ? 'border-[#d65a8d] text-[#d65a8d]' : 'border-transparent text-gray-500 hover:text-gray-700'}`}
-            >
-              More Info
-            </button>
-          </div>
-
-          <div className="p-6 pt-0">
-            {activeTab === 'description' && (
-              <div className="text-gray-700 leading-relaxed max-w-3xl">
-                {product.description || `A perfect Valentine's gift to express your love. This adorable ${product.name.toLowerCase()} will light up their day!`}
-              </div>
-            )}
-
-            {activeTab === 'productInfo' && (
-              <div className="text-gray-700 max-w-3xl">
-                <p>Specific details about the product's material, dimensions, and contents are not available at this time.</p>
-              </div>
-            )}
-
-            {activeTab === 'moreInfo' && (
-              <div className="text-gray-700 max-w-3xl">
-                <h3 className="font-semibold text-gray-900 mb-4">Delivery Info</h3>
-                <ul className="list-disc pl-5 space-y-3">
-                  <li>Delivered product might vary slightly from the image shown.</li>
-                  <li>This product is perishable therefore delivery will be attempted only once.</li>
->>>>>>> Stashed changes
                   <li>The delivery cannot be redirected to any other address.</li>
                 </ul>
               </div>
