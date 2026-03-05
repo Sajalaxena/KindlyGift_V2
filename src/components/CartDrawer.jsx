@@ -49,7 +49,7 @@ export default function CartDrawer({ onCheckout, onClose }) {
               {cart.map((item) => (
                 <div key={item.id} className="flex items-center gap-4 p-3 bg-gray-50 rounded-lg">
                   {item.image ? (
-                    <img src={item.image} alt={item.name} className="w-16 h-16 object-cover rounded" />
+                    <img src={Array.isArray(item.image) ? item.image[0] : item.image} alt={item.name} className="w-16 h-16 object-cover rounded" />
                   ) : (
                     <div className="w-16 h-16 bg-gray-200 rounded" />
                   )}

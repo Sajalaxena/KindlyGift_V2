@@ -174,7 +174,7 @@ export default function Checkout({ onClose, onOrderSuccess }) {
                       <div className="flex gap-4">
                         {item.image && (
                           <img
-                            src={item.image}
+                            src={Array.isArray(item.image) ? item.image[0] : item.image}
                             alt={item.name}
                             className="w-20 h-20 object-cover rounded-lg"
                           />
