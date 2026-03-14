@@ -33,6 +33,8 @@ export default function App() {
       <div className="relative z-10 flex flex-col min-h-screen">
         {!isCheckoutPage && <Navbar onCartClick={() => setShowCart(!showCart)} />}
 
+        {!isCheckoutPage && <div className="h-4" />}
+
         <main className="flex-1">
           <Routes>
             <Route path="/" element={<HomePage />} />

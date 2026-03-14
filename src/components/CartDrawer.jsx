@@ -62,7 +62,7 @@ export default function CartDrawer({ onCheckout, onClose }) {
                       </div>
                       <button
                         onClick={() => removeFromCart(item.id)}
-                        className="text-[#d65a8d] hover:text-[#b03a6b] text-lg cursor-pointer"
+                        className="text-[#B77570] hover:text-[#945854] text-lg cursor-pointer"
                         aria-label={`Remove ${item.name}`}
                       >
                         ✕
@@ -111,16 +111,16 @@ export default function CartDrawer({ onCheckout, onClose }) {
                 <p className="text-xs text-green-600 mb-4 text-center">Free delivery on orders above ₹999</p>
               )}
 
-              <div className="mb-4 bg-pink-50 p-3 rounded-lg">
+              <div className="mb-4 bg-baby-pink-50 p-3 rounded-lg">
                 <div className="flex justify-between items-center">
                   <p className="font-semibold text-gray-800">Total:</p>
-                  <p className="text-2xl font-bold text-[#d65a8d]">₹{grandTotal.toFixed(2)}</p>
+                  <p className="text-2xl font-bold text-[#B77570]">₹{grandTotal.toFixed(2)}</p>
                 </div>
               </div>
 
               <button
                 onClick={onCheckout}
-                className="w-full bg-[#d65a8d] text-white py-3 rounded-lg font-bold hover:bg-[#b03a6b] transition-colors cursor-pointer"
+                className="w-full bg-[#B77570] text-white py-3 rounded-lg font-bold hover:bg-[#945854] transition-colors cursor-pointer"
               >
                 Checkout
               </button>

@@ -22,7 +22,7 @@ export default function Navbar({ onCartClick }) {
           flex 
           items-center 
           justify-between
-          shadow-[0_20px_40px_rgba(255,20,147,0.25)]
+          shadow-[0_20px_40px_rgba(183,117,112,0.25)]
           px-4
           md:px-6
         ">
@@ -34,7 +34,7 @@ export default function Navbar({ onCartClick }) {
           >
             <img src="/Kindly_gift.png" alt="KindlyGift" width={40} height={40} className="rounded-full" />
 
-            <span className="font-heading text-xl md:text-3xl font-extrabold text-[#d65a8d] tracking-wide">
+            <span className="font-heading text-xl md:text-3xl font-extrabold text-[#B77570] tracking-wide">
               KindlyGift
             </span>
           </div>
@@ -49,8 +49,8 @@ export default function Navbar({ onCartClick }) {
             py-2 
             rounded-full 
             bg-gradient-to-r 
-            from-[#ffc8dd] 
-            to-[#d65a8d] 
+            from-[#ECD2D0] 
+            to-[#B77570] 
             text-white 
             font-medium 
             shadow-lg

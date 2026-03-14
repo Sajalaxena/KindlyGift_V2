@@ -53,14 +53,14 @@ export default function WelcomePopup() {
                         </button>
 
                         {/* Header / Graphic Area */}
-                        <div className="bg-gradient-to-br from-[#ffc8dd] to-[#ffafcc] p-6 text-center text-[#d65a8d]">
+                        <div className="bg-gradient-to-br from-[#ECD2D0] to-[#ffafcc] p-6 text-center text-[#B77570]">
                             <motion.div
                                 initial={{ scale: 0 }}
                                 animate={{ scale: 1 }}
                                 transition={{ delay: 0.3, type: "spring", stiffness: 200 }}
                                 className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-white shadow-lg mb-4"
                             >
-                                <FaGift className="text-3xl text-[#d65a8d]" />
+                                <FaGift className="text-3xl text-[#B77570]" />
                             </motion.div>
                             <h2 className="text-2xl font-black uppercase tracking-wider text-white drop-shadow-md">
                                 Special Offer!
@@ -70,20 +70,20 @@ export default function WelcomePopup() {
                         {/* Content Area */}
                         <div className="p-6 text-center">
                             <p className="mb-2 text-lg font-medium text-gray-800">
-                                Get <span className="text-[#d65a8d] font-bold text-xl">10% OFF</span> your first order!
+                                Get <span className="text-[#B77570] font-bold text-xl">10% OFF</span> your first order!
                             </p>
                             <p className="mb-6 text-sm text-gray-500">
                                 Use the coupon code below at checkout to claim your discount.
                             </p>
 
                             {/* Coupon Code Section */}
-                            <div className="flex items-center justify-between rounded-lg border-2 border-dashed border-[#ffafcc] bg-pink-50 p-2 relative">
-                                <span className="text-xl font-bold tracking-widest text-[#d65a8d] ml-4">
+                            <div className="flex items-center justify-between rounded-lg border-2 border-dashed border-[#ffafcc] bg-baby-pink-50 p-2 relative">
+                                <span className="text-xl font-bold tracking-widest text-[#B77570] ml-4">
                                     WELCOME10
                                 </span>
                                 <button
                                     onClick={handleCopy}
-                                    className={`flex items-center gap-2 rounded-md px-4 py-2 text-sm font-semibold text-white transition-all ${copied ? "bg-green-500" : "bg-[#d65a8d] hover:bg-[#e476a3]"
+                                    className={`flex items-center gap-2 rounded-md px-4 py-2 text-sm font-semibold text-white transition-all ${copied ? "bg-green-500" : "bg-[#B77570] hover:bg-[#e476a3]"
                                         }`}
                                 >
                                     {copied ? (

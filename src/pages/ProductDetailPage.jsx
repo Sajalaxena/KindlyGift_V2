@@ -49,7 +49,7 @@ export default function ProductDetailPage() {
       <div className="max-w-4xl mx-auto">
         <button
           onClick={() => navigate(-1)}
-          className="mb-6 px-4 py-2 bg-white rounded-full text-pink-600 font-semibold hover:bg-pink-100 transition"
+          className="mb-6 px-4 py-2 bg-white rounded-full text-baby-pink-600 font-semibold hover:bg-baby-pink-100 transition"
         >
           ← Back
         </button>
@@ -63,7 +63,7 @@ export default function ProductDetailPage() {
           {/* Details */}
           <div className="flex flex-col">
             {/* Title - optimized for mobile to stay on one line where possible */}
-            <h1 className="text-2xl sm:text-3xl font-bold text-[#d65a8d] mb-4 leading-tight">
+            <h1 className="text-2xl sm:text-3xl font-bold text-[#B77570] mb-4 leading-tight">
               {product.name}
             </h1>
 
@@ -182,7 +182,7 @@ export default function ProductDetailPage() {
               onClick={handleAddToCart}
               className={`w-full md:w-3/4 py-3 rounded-full font-bold text-white text-lg transition ${isAdded
                 ? "bg-green-500"
-                : "bg-pink-600 hover:bg-pink-700"
+                : "bg-baby-pink-600 hover:bg-baby-pink-700"
                 }`}
             >
               {isAdded ? "✓ Added to Cart" : "+ Add to Cart"}
@@ -196,7 +196,7 @@ export default function ProductDetailPage() {
             <div className="glass rounded-2xl p-6">
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center text-pink-700 font-bold text-lg">
+                  <div className="w-10 h-10 rounded-full bg-baby-pink-100 flex items-center justify-center text-baby-pink-700 font-bold text-lg">
                     S
                   </div>
                   <div>
