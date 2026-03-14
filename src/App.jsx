@@ -48,6 +48,8 @@ export default function App() {
           <CartDrawer onCheckout={handleCheckout} onClose={() => setShowCart(false)} />
         )}
       </AnimatePresence>
+      <Analytics />
+
     </div>
   );
 }
