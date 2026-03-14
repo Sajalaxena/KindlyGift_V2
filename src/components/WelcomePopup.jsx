@@ -77,7 +77,7 @@ export default function WelcomePopup() {
                             </p>
 
                             {/* Coupon Code Section */}
-                            <div className="flex items-center justify-between rounded-lg border-2 border-dashed border-[#ffafcc] bg-baby-pink-50 p-2 relative">
+                            <div className="flex items-center justify-between rounded-2xl border-2 border-dashed border-[#ECD2D0] bg-[#FAF1F1] p-2 relative shadow-inner">
                                 <span className="text-xl font-bold tracking-widest text-[#B77570] ml-4">
                                     WELCOME10
                                 </span>

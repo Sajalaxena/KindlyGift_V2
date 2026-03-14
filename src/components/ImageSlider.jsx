@@ -41,7 +41,7 @@ export default function ImageSlider({ images = [], height = "h-80", showThumbnai
               key={i}
               onClick={() => setIndex(i)}
               className={`w-16 h-16 rounded-xl overflow-hidden border-2 transition-all ${index === i
-                ? "border-baby-pink-500 scale-105 shadow-md"
+                ? "border-[#B77570] scale-105 shadow-md"
                 : "border-transparent opacity-60 hover:opacity-100"
                 }`}
             >

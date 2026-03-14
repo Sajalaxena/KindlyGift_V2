@@ -111,7 +111,7 @@ export default function CartDrawer({ onCheckout, onClose }) {
                 <p className="text-xs text-green-600 mb-4 text-center">Free delivery on orders above ₹999</p>
               )}
 
-              <div className="mb-4 bg-baby-pink-50 p-3 rounded-lg">
+              <div className="mb-4 bg-[#FAF1F1] p-4 rounded-2xl border border-[#ECD2D0]/50 shadow-inner">
                 <div className="flex justify-between items-center">
                   <p className="font-semibold text-gray-800">Total:</p>
                   <p className="text-2xl font-bold text-[#B77570]">₹{grandTotal.toFixed(2)}</p>

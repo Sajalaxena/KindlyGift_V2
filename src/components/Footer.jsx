@@ -9,14 +9,14 @@ export default function Footer() {
     <footer className="relative mt-28">
 
       {/* Soft divider */}
-      <div className="h-px w-full bg-gradient-to-r from-transparent via-baby-pink-400/40 to-transparent mb-12" />
+      <div className="h-px w-full bg-gradient-to-r from-transparent via-[#B77570]/30 to-transparent mb-12" />
 
       <div className="glass max-w-7xl mx-auto px-8 py-16 rounded-t-3xl text-gray-700">
 
         {/* Brand */}
         <div className="text-center max-w-2xl mx-auto">
           <h3 className="font-heading text-3xl md:text-4xl text-[#B77570] flex items-center justify-center gap-2">
-            KindlyGift <FaHeart className="text-baby-pink-500" />
+            KindlyGift <FaHeart className="text-[#B77570]" />
           </h3>
 
           <p className="mt-5 text-lg leading-relaxed">
@@ -47,7 +47,7 @@ export default function Footer() {
             Contact us:{" "}
             <a
               href="mailto:help.kindlygift@gmail.com"
-              className="text-baby-pink-600 font-medium hover:underline"
+              className="text-[#B77570] font-bold hover:underline"
             >
               help.kindlygift@gmail.com
             </a>
@@ -74,14 +74,14 @@ function SocialIcon({ href, label, children }) {
         rounded-full
         glass
         flex items-center justify-center
-        text-baby-pink-600
+        text-[#B77570]
         text-xl
         shadow-lg
         hover:scale-110
         hover:text-white
         hover:bg-gradient-to-br
-        hover:from-baby-pink-500
-        hover:to-rose-500
+        hover:from-[#B77570]
+        hover:to-[#945854]
         transition
       "
     >

@@ -49,12 +49,12 @@ export default function ProductDetailPage() {
       <div className="max-w-4xl mx-auto">
         <button
           onClick={() => navigate(-1)}
-          className="mb-6 px-4 py-2 bg-white rounded-full text-baby-pink-600 font-semibold hover:bg-baby-pink-100 transition"
+          className="mb-6 px-4 py-2 bg-white rounded-full text-[#B77570] font-semibold hover:bg-[#FAF1F1] transition shadow-sm border border-[#ECD2D0]"
         >
           ← Back
         </button>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-8 font-body">
           {/* Images */}
           <div className="w-full">
             <ImageSlider images={images} height="h-96" showThumbnails={true} />
@@ -71,11 +71,11 @@ export default function ProductDetailPage() {
               <span className="text-3xl font-bold text-gray-900">
                 ₹{product.salePrice}
               </span>
-              <span className="line-through text-gray-500 text-xl">
+              <span className="line-through text-gray-500 text-xl font-light">
                 ₹{product.price}
               </span>
               {discount !== null && (
-                <span className="text-green-600 border border-green-600 bg-green-50 font-semibold px-2 py-1 rounded text-sm tracking-wide">
+                <span className="text-green-600 border border-green-600 bg-green-50 font-bold px-2 py-1 rounded text-xs tracking-wide shadow-sm">
                   {discount}% OFF
                 </span>
               )}
@@ -84,14 +84,14 @@ export default function ProductDetailPage() {
             {/* Tabbed information section: Description / Product Info / More Info */}
             <div className="mb-8">
               {/* Tabs header */}
-              <div className="border-b border-gray-200">
+              <div className="border-b border-[#FAF1F1]">
                 <div className="flex gap-6 text-sm sm:text-base">
                   <button
                     type="button"
                     onClick={() => setActiveTab("description")}
-                    className={`pb-2 transition-colors ${activeTab === "description"
-                      ? "border-b-2 border-gray-900 text-gray-900 font-semibold"
-                      : "border-b-2 border-transparent text-gray-500"
+                    className={`pb-2 transition-all ${activeTab === "description"
+                      ? "border-b-2 border-[#B77570] text-[#B77570] font-bold"
+                      : "border-b-2 border-transparent text-gray-400 hover:text-gray-600"
                       }`}
                   >
                     Description
@@ -99,9 +99,9 @@ export default function ProductDetailPage() {
                   <button
                     type="button"
                     onClick={() => setActiveTab("info")}
-                    className={`pb-2 transition-colors ${activeTab === "info"
-                      ? "border-b-2 border-gray-900 text-gray-900 font-semibold"
-                      : "border-b-2 border-transparent text-gray-500"
+                    className={`pb-2 transition-all ${activeTab === "info"
+                      ? "border-b-2 border-[#B77570] text-[#B77570] font-bold"
+                      : "border-b-2 border-transparent text-gray-400 hover:text-gray-600"
                       }`}
                   >
                     Product Info
@@ -109,9 +109,9 @@ export default function ProductDetailPage() {
                   <button
                     type="button"
                     onClick={() => setActiveTab("more")}
-                    className={`pb-2 transition-colors ${activeTab === "more"
-                      ? "border-b-2 border-gray-900 text-gray-900 font-semibold"
-                      : "border-b-2 border-transparent text-gray-500"
+                    className={`pb-2 transition-all ${activeTab === "more"
+                      ? "border-b-2 border-[#B77570] text-[#B77570] font-bold"
+                      : "border-b-2 border-transparent text-gray-400 hover:text-gray-600"
                       }`}
                   >
                     More Info
@@ -120,43 +120,38 @@ export default function ProductDetailPage() {
               </div>
 
               {/* Tabs content */}
-              <div className="mt-4 text-sm sm:text-base text-gray-700">
+              <div className="mt-4 text-sm sm:text-base text-gray-700 leading-relaxed font-body">
                 {activeTab === "description" && (
-                  <p className="leading-relaxed">
+                  <p>
                     {product.description ||
                       `A perfect gift to express your love. This adorable ${product.name.toLowerCase()} will light up their day!`}
                   </p>
                 )}
 
                 {activeTab === "info" && (
-                  <dl className="space-y-2">
+                  <dl className="space-y-3">
                     <div className="flex gap-4">
-                      <dt className="w-28 text-gray-500">Name</dt>
-                      <dd className="flex-1 text-gray-800">{product.name}</dd>
+                      <dt className="w-24 text-gray-400 font-medium">Name</dt>
+                      <dd className="flex-1 text-gray-800 font-semibold">{product.name}</dd>
                     </div>
                     {product.material && (
                       <div className="flex gap-4">
-                        <dt className="w-28 text-gray-500">Material</dt>
-                        <dd className="flex-1 text-gray-800">{product.material}</dd>
+                        <dt className="w-24 text-gray-400 font-medium">Material</dt>
+                        <dd className="flex-1 text-gray-800 font-semibold">{product.material}</dd>
                       </div>
                     )}
                     <div className="flex gap-4">
-                      <dt className="w-28 text-gray-500">Price</dt>
-                      <dd className="flex-1 text-gray-800">
+                      <dt className="w-24 text-gray-400 font-medium">Price</dt>
+                      <dd className="flex-1 text-gray-800 font-semibold">
                         ₹{product.salePrice}{" "}
-                        <span className="line-through text-gray-400 ml-1 text-sm">
+                        <span className="line-through text-gray-400 ml-1 text-xs font-normal">
                           ₹{product.price}
                         </span>
-                        {discount !== null && (
-                          <span className="ml-2 text-xs font-semibold text-green-600">
-                            ({discount}% OFF)
-                          </span>
-                        )}
                       </dd>
                     </div>
                     <div className="flex gap-4">
-                      <dt className="w-28 text-gray-500">Availability</dt>
-                      <dd className="flex-1 text-gray-800">
+                      <dt className="w-24 text-gray-400 font-medium">Status</dt>
+                      <dd className={`flex-1 font-bold ${product.isOutOfStock ? "text-red-500" : "text-green-600"}`}>
                         {product.isOutOfStock ? "Out of stock" : "In stock"}
                       </dd>
                     </div>
@@ -164,14 +159,14 @@ export default function ProductDetailPage() {
                 )}
 
                 {activeTab === "more" && (
-                  <div>
-                    <h3 className="font-semibold text-gray-900 mb-2">Delivery Info</h3>
-                    <ul className="list-disc pl-5 space-y-1">
-                      <li>Delivered product might vary slightly from the image shown.</li>
-                      <li>
-                        This product is perishable therefore delivery will be attempted only once.
-                      </li>
-                      <li>The delivery cannot be redirected to any other address.</li>
+                  <div className="bg-[#FAF1F1]/30 p-4 rounded-2xl border border-[#ECD2D0]/40">
+                    <h3 className="font-bold text-[#B77570] mb-2 flex items-center gap-2">
+                      <span>🚚</span> Delivery Info
+                    </h3>
+                    <ul className="list-disc pl-5 space-y-1.5 text-sm text-gray-600">
+                      <li>Delivered product might vary slightly from the image.</li>
+                      <li>Perishable item: only one delivery attempt.</li>
+                      <li>Cannot be redirected to any other address.</li>
                     </ul>
                   </div>
                 )}
@@ -180,78 +175,57 @@ export default function ProductDetailPage() {
 
             <button
               onClick={handleAddToCart}
-              className={`w-full md:w-3/4 py-3 rounded-full font-bold text-white text-lg transition ${isAdded
-                ? "bg-green-500"
-                : "bg-baby-pink-600 hover:bg-baby-pink-700"
+              className={`w-full md:w-3/4 py-4 rounded-full font-bold text-white text-lg transition-all shadow-md active:scale-95 flex items-center justify-center gap-2 ${isAdded
+                ? "bg-[#945854]"
+                : "bg-[#B77570] hover:bg-[#945854] hover:shadow-lg"
                 }`}
             >
-              {isAdded ? "✓ Added to Cart" : "+ Add to Cart"}
+              {isAdded ? "✓ Added to Cart" : "🛍️ Add to Cart"}
             </button>
           </div>
         </div>
-        <div className="mt-16 max-w-4xl mx-auto">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8 border-b pb-4">Customer Reviews</h2>
+
+        {/* Customer Reviews Section */}
+        <div className="mt-16 max-w-4xl mx-auto font-body">
+          <h2 className="text-2xl font-bold text-gray-800 mb-8 border-b border-[#FAF1F1] pb-4 flex items-center gap-2">
+            <span>✨</span> Customer Reviews
+          </h2>
 
           <div className="space-y-6">
-            <div className="glass rounded-2xl p-6">
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-baby-pink-100 flex items-center justify-center text-baby-pink-700 font-bold text-lg">
-                    S
+            {product.reviews && product.reviews.length > 0 ? (
+              product.reviews.map((review, index) => (
+                <div key={index} className="bg-white border border-[#ECD2D0]/60 rounded-3xl p-6 shadow-sm hover:shadow-md transition-shadow">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-full bg-[#FAF1F1] flex items-center justify-center text-[#B77570] font-bold text-lg border border-[#ECD2D0]/30 shadow-inner">
+                        {review.user.charAt(0)}
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-gray-800 leading-none mb-1">{review.user}</h4>
+                        <div className="flex items-center">
+                          {review.verified && (
+                            <span className="text-[9px] text-green-600 bg-green-50 px-1.5 py-0.5 rounded-full font-extrabold uppercase tracking-tight border border-green-200">
+                              ✓ Verified Buyer
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                    <div className="flex text-yellow-400 text-sm tracking-tighter">
+                      {"★".repeat(review.rating)}{"☆".repeat(5 - review.rating)}
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900">Sneha K.</h4>
-                    <p className="text-sm text-gray-500">Verified Buyer</p>
-                  </div>
+                  <p className="text-gray-700 leading-relaxed font-body">
+                    "{review.comment}"
+                  </p>
                 </div>
-                <div className="flex text-yellow-400 text-lg">
-                  ★★★★★
-                </div>
+              ))
+            ) : (
+              <div className="text-center py-12 bg-[#FAF1F1]/50 rounded-3xl border border-dashed border-[#ECD2D0] flex flex-col items-center gap-3">
+                <span className="text-3xl">💝</span>
+                <p className="text-gray-500 font-medium">Be the first to review this product!</p>
               </div>
-              <p className="text-gray-700 leading-relaxed">
-                "Absolutely in love with this! The silicone is so soft and squishy, and the light is perfectly warm for a bedside table. Fast delivery to Mumbai too. Highly recommended for gifting!"
-              </p>
-            </div>
-
-            <div className="glass rounded-2xl p-6">
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-700 font-bold text-lg">
-                    R
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900">Rahul M.</h4>
-                    <p className="text-sm text-gray-500">Verified Buyer</p>
-                  </div>
-                </div>
-                <div className="flex text-yellow-400 text-lg">
-                  ★★★★★
-                </div>
-              </div>
-              <p className="text-gray-700 leading-relaxed">
-                "Bought this as a Valentine's gift for my girlfriend and she hasn't stopped talking about it. The battery lasts surprisingly long. Great packaging and premium feel."
-              </p>
-            </div>
-
-            <div className="glass rounded-2xl p-6">
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center text-purple-700 font-bold text-lg">
-                    A
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900">Ananya D.</h4>
-                    <p className="text-sm text-gray-500">Verified Buyer</p>
-                  </div>
-                </div>
-                <div className="flex text-yellow-400 text-lg">
-                  ★★★★☆
-                </div>
-              </div>
-              <p className="text-gray-700 leading-relaxed">
-                "Very cute product. Looks exactly like the pictures on the site. Lost one star only because the delivery was delayed by a day in Bangalore, but the customer support team was very helpful. Worth the money!"
-              </p>
-            </div>
+            )}
           </div>
         </div>
       </div>

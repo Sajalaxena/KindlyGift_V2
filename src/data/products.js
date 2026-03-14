@@ -13,7 +13,11 @@ export const products = [
           "https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771180441/Silicon_Rabbit_3_g2n47d.jpg"
         ],
         description: "Adorable silicone rabbit night lamp with soft glow, perfect for bedside comfort and gentle illumination.",
-        isOutOfStock: false
+        isOutOfStock: false,
+        reviews: [
+          { user: "Priya S.", rating: 5, comment: "Bohot hi pyara lamp hai! Mere bete ko bohot pasand aaya. Quality kaafi acchi hai.", verified: true },
+          { user: "Amit R.", rating: 5, comment: "Value for money product. Delivery bhi fast thi. Highly recommended!", verified: true }
+        ]
       },
       {
         id: "C1P2",
@@ -24,7 +28,11 @@ export const products = [
           "https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771180441/Slipping_Duck_1_cdnty7.jpg"
         ],
         description: "Cute duck-themed night light with a playful design, adding charm and warmth to any room.",
-        isOutOfStock: false
+        isOutOfStock: false,
+        reviews: [
+          { user: "Neha G.", rating: 4, comment: "Duck ka design bohot cute hai. Squishy material hai toh bacche bhi khush.", verified: true },
+          { user: "Vikas L.", rating: 5, comment: "Sahi me mast product hai. Gift dene ke liye perfect choice.", verified: true }
+        ]
       },
       {
         id: "C1P3",
@@ -38,7 +46,11 @@ export const products = [
           "https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771180441/PandaLamp2_ra5lw4.jpg",
         ],
         description: "Charming panda-shaped night lamp that creates a cozy atmosphere for peaceful nights.",
-        isOutOfStock: false
+        isOutOfStock: false,
+        reviews: [
+          { user: "Ananya D.", rating: 5, comment: "Panda toh ekdum real lagta hai. Warm light bohot sukoon deti hai.", verified: true },
+          { user: "Rohan S.", rating: 5, comment: "Premium feel hai. Price ke hisab se top quality.", verified: true }
+        ]
       },
       {
         id: "C1P4",
@@ -50,7 +62,10 @@ export const products = [
           "https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771180449/Astronaut_Lamp1_qe6okt.jpg"
         ],
         description: "Space-themed astronaut silicone night light, perfect for dreamers and space enthusiasts.",
-        isOutOfStock: false
+        isOutOfStock: false,
+        reviews: [
+          { user: "Siddharth K.", rating: 5, comment: "Duniya se alag design! Night light ka light bohot subtle hai, eyes ko chubhta nahi.", verified: true }
+        ]
       }
     ]
   },
@@ -67,7 +82,10 @@ export const products = [
           "https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771180439/LED_clip_1_dnwqyd.jpg"
         ],
         description: "Versatile LED string lights with clips, perfect for hanging photos and creating a warm, personalized display.",
-        isOutOfStock: false
+        isOutOfStock: false,
+        reviews: [
+          { user: "Swati P.", rating: 4, comment: "Memories ko sjane ke liye best thing. Clips bhi strong hain.", verified: true }
+        ]
       }
     ]
   },
@@ -85,7 +103,10 @@ export const products = [
           "https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771180445/Tulip_Lamp1_gdjlgk.jpg"
         ],
         description: "Elegant tulip-inspired lamp that brings a touch of nature and sophistication to your living space.",
-        isOutOfStock: false
+        isOutOfStock: false,
+        reviews: [
+          { user: "Ishani R.", rating: 5, comment: "Beautiful design, room ka look hi badal gaya. Aesthetic lover ke liye must buy.", verified: true }
+        ]
       },
       {
         id: "C3P2",
@@ -97,7 +118,10 @@ export const products = [
           "https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771180436/CrystalLamp2_xzddrf.jpg"
         ],
         description: "Stunning crystal diamond-shaped table lamp that adds luxury and sparkle to any room decor.",
-        isOutOfStock: false
+        isOutOfStock: false,
+        reviews: [
+          { user: "Karan W.", rating: 5, comment: "Ekdm luxury feel hai. Crystal reflections bohot mast lagte hain walls pe.", verified: true }
+        ]
       }
     ]
   },
@@ -114,7 +138,10 @@ export const products = [
           "https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771180447/3D_moon_3_aftsfu.jpg"
         ],
         description: "Mesmerizing 3D crystal ball featuring a detailed moon design, creating magical illumination.",
-        isOutOfStock: false
+        isOutOfStock: false,
+        reviews: [
+          { user: "Megha S.", rating: 5, comment: "Moon bohot clear dikhta hai. Table pe rakha hua bohot sundar lagta hai.", verified: true }
+        ]
       },
       {
         id: "C4P2",
@@ -128,7 +155,10 @@ export const products = [
           "https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771180448/3D_solar_system_2_djd2fw.jpg"
         ],
         description: "Captivating 3D crystal ball showcasing the solar system, perfect for astronomy lovers.",
-        isOutOfStock: false
+        isOutOfStock: false,
+        reviews: [
+          { user: "Arjun B.", rating: 5, comment: "Solar system lovers ke liye jannat hai ye. Best gift idea for kids.", verified: true }
+        ]
       },
       {
         id: "C4P3",
@@ -137,7 +167,10 @@ export const products = [
         salePrice: 349,
         image: ["https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771180446/3D_moon_2_xrkdj4.jpg"],
         description: "Beautiful 3D crystal ball lamp with intricate designs that illuminate with enchanting patterns.",
-        isOutOfStock: false
+        isOutOfStock: false,
+        reviews: [
+          { user: "Tanya M.", rating: 4, comment: "Magic spheres! Light on hote hi pura vibe change ho jata hai.", verified: true }
+        ]
       }
     ]
   },
@@ -155,9 +188,12 @@ export const products = [
           "https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771180441/Astronaut3_ougxkq.jpg"
         ],
         description: "Innovative astronaut-shaped projector that fills your room with stunning starry night displays.",
-        isOutOfStock: false
+        isOutOfStock: false,
+        reviews: [
+          { user: "Rahul T.", rating: 5, comment: "Astronaut projector mast hai! Stars and galaxy bohot realistic lagte hain.", verified: true }
+        ]
       },
-      { 
+      {
         id: "C5P2",
         name: "Ocean Waves Projection Light",
         price: 599,
@@ -167,7 +203,10 @@ export const products = [
           "https://res.cloudinary.com/dyyxwwn7g/image/upload/v1771180444/Water_Ripple_Night_Lamp_2_hp1ulq.jpg"
         ],
         description: "Soothing water ripple projection light that creates calming wave patterns for relaxation.",
-        isOutOfStock: false
+        isOutOfStock: false,
+        reviews: [
+          { user: "Snehal J.", rating: 5, comment: "Thak kar aao aur ye chala lo... bohot hi soothing ripple effect hai.", verified: true }
+        ]
       }
     ]
   }
