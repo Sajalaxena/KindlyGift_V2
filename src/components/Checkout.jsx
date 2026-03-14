@@ -300,7 +300,7 @@ export default function Checkout({ onClose, onOrderSuccess }) {
                   <span className="text-[#B77570]">🏷️</span>
                   <h3 className="font-semibold text-gray-700 text-sm">Have a Coupon?</h3>
                 </div>
-                <div className="flex gap-2">
+                <div className="flex flex-col xs:flex-row gap-2">
                   <input
                     type="text"
                     name="couponCode"
@@ -313,14 +313,14 @@ export default function Checkout({ onClose, onOrderSuccess }) {
                   {appliedCoupon ? (
                     <button
                       onClick={() => { setAppliedCoupon(""); setDiscountAmount(0); setFormData((p) => ({ ...p, couponCode: "" })); }}
-                      className="px-4 py-2.5 bg-red-100 text-red-600 border-2 border-red-200 rounded-xl font-semibold text-sm hover:bg-red-200 transition-all cursor-pointer"
+                      className="whitespace-nowrap px-4 py-2.5 bg-red-100 text-red-600 border-2 border-red-200 rounded-xl font-semibold text-sm hover:bg-red-200 transition-all cursor-pointer"
                     >
                       Remove
                     </button>
                   ) : (
                     <button
                       onClick={handleApplyCoupon}
-                      className="px-5 py-2.5 bg-[#B77570] text-white rounded-xl font-semibold text-sm hover:bg-[#945854] transition-all cursor-pointer"
+                      className="whitespace-nowrap px-5 py-2.5 bg-[#B77570] text-white rounded-xl font-semibold text-sm hover:bg-[#945854] transition-all cursor-pointer"
                     >
                       Apply
                     </button>
