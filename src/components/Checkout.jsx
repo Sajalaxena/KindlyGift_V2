@@ -30,6 +30,7 @@ export default function Checkout({ onClose, onOrderSuccess }) {
   };
 
   const VALID_COUPONS = {
+    WELCOME10: 0.1,
     SAVE10: 0.1,
     SAVE20: 0.2,
     FLAT100: 100,

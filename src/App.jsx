@@ -10,6 +10,7 @@ import CartDrawer from "./components/CartDrawer";
 import ValentineBackground from "./components/ValentineBackground";
 import { Analytics } from "@vercel/analytics/react";
 import ScrollToTop from "./components/ScrollToTop";
+import WelcomePopup from "./components/WelcomePopup";
 
 export default function App() {
   const [showCart, setShowCart] = useState(false);
@@ -25,6 +26,7 @@ export default function App() {
   return (
     <div className="relative min-h-screen">
       <ScrollToTop />
+      <WelcomePopup />
       {/* Ambient animated background */}
       <ValentineBackground />
 

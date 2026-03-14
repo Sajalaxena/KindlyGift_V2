@@ -3,6 +3,7 @@ import { useState } from "react";
 import { products } from "../data/products";
 import { useCart } from "../context/CartContext";
 import ImageSlider from "../components/ImageSlider";
+import { Helmet } from "react-helmet-async";
 
 export default function ProductDetailPage() {
   const { id } = useParams();
@@ -32,9 +33,19 @@ export default function ProductDetailPage() {
 
   const images = Array.isArray(product.image) ? product.image : [product.image];
   const discount = getDiscountPercentage(product.price, product.salePrice);
+  const title = `${product.name} | KindlyGift`;
+  const description = product.description || `Buy ${product.name} online. Find the perfect customized gifts and premium hampers for your loved ones at KindlyGift.in.`;
 
   return (
     <div className="p-6">
+      <Helmet>
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={images[0]} />
+      </Helmet>
+
       <div className="max-w-4xl mx-auto">
         <button
           onClick={() => navigate(-1)}
@@ -113,7 +124,7 @@ export default function ProductDetailPage() {
                 {activeTab === "description" && (
                   <p className="leading-relaxed">
                     {product.description ||
-                      `A perfect Valentine's gift to express your love. This adorable ${product.name.toLowerCase()} will light up their day!`}
+                      `A perfect gift to express your love. This adorable ${product.name.toLowerCase()} will light up their day!`}
                   </p>
                 )}
 

@@ -2,12 +2,20 @@ import Hero from "../components/Hero";
 import ProductCard from "../components/ProductCard";
 import { useNavigate } from "react-router-dom";
 import { products } from "../data/products";
+import { Helmet } from "react-helmet-async";
 
 export default function HomePage() {
   const navigate = useNavigate();
 
   return (
     <div className="relative min-h-screen overflow-hidden font-body">
+      <Helmet>
+        <title>KindlyGift | Premium & Custom Gifts</title>
+        <meta name="description" content="Shop the best custom gifts and premium hampers. Fast delivery and premium quality guaranteed." />
+        <meta property="og:title" content="KindlyGift | Premium & Custom Gifts" />
+        <meta property="og:description" content="Shop the best custom gifts and premium hampers. Fast delivery and premium quality guaranteed." />
+      </Helmet>
+
       {/* Foreground content */}
       <div className="relative z-10">
 
@@ -20,10 +28,10 @@ export default function HomePage() {
         <section id="products-section" className="max-w-7xl mx-auto px-6 pt-12">
           <div className="mb-16 text-center">
             <h2 className="font-heading text-4xl md:text-5xl text-[#d65a8d]">
-              Women's Day Bestsellers
+              Our Bestsellers
             </h2>
             <p className="mt-4 text-lg text-gray-700 max-w-xl mx-auto">
-              Thoughtfully crafted glowing gifts to make her feel special.
+              Thoughtfully crafted gifts to make them feel special.
             </p>
           </div>
 
